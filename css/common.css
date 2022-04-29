@@ -1,0 +1,15 @@
+:root {
+    --bg: linear-gradient(#37E0E0, #40FF53);
+}
+
+/*FONTS*/
+@font-face {
+    font-family: Mario;
+    src: url('../font/CHLORINP.TTF');
+}
+
+html {
+    height: 100vh;
+    background: var(--bg);
+    font-family: Mario;
+}
