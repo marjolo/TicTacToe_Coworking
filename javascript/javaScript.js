@@ -1,4 +1,7 @@
 let board;
+let x = "X";
+let o = "O";
+let current_player = x;
 
 window.onload = function (){
     console.log("Window loaded")
@@ -27,9 +30,35 @@ function setBoard() {
                 tile.classList.add("vertical-line");
             }
 
+            tile.innerText = " ";
+            tile.addEventListener('click', setTile);
             document.getElementById("board").append(tile);
+
         }
     }
 
     console.log("Board set")
 }
+
+function setTile() {
+    console.log("tile cliked")
+    //console.log(this);
+
+
+    if (this.innerHTML === " "){
+        //this.innerHTML;
+        if (current_player === x){
+            this.innerHTML = x;
+            current_player = o;
+        }
+        else if (current_player === o){
+            this.innerHTML = o;
+            current_player = x;
+        }
+    }
+
+
+
+}
+
+
