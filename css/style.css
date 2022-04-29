@@ -20,8 +20,8 @@ h1{
 }
 
 .tile {
-    width: 14rem;
-    height: 14rem;
+    min-width: 14rem;
+    min-height: 14rem;
 
     font-size: 12rem;
     display: flex;

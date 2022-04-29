@@ -16,6 +16,7 @@ function setBoard() {
         [' ', ' ', ' ']
     ]
 
+
     for (let r = 0; r < 3; r++){
         for (let k = 0; k < 3; k++){
             //<div id="0-0" class="tile"></div>
@@ -33,7 +34,6 @@ function setBoard() {
             tile.innerText = " ";
             tile.addEventListener('click', setTile);
             document.getElementById("board").append(tile);
-
         }
     }
 
@@ -57,7 +57,9 @@ function setTile() {
         }
     }
 
-
+    let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
+    let r = parseInt(coords[0]);
+    let k = parseInt(coords[1]);
 
 }
 
