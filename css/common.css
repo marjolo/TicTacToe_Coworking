@@ -1,3 +1,8 @@
 :root {
     --bg: linear-gradient(#37E0E0, #40FF53);
 }
+
+html {
+    height: 100vh;
+    background: var(--bg);
+}
