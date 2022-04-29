@@ -1,0 +1,18 @@
+html {
+    font-size: 62.5%;
+}
+
+body{
+    text-align: center;
+}
+
+h1{
+    font-size: 3rem;
+}
+
+hr {
+    max-width: 50rem;
+    height: 0.5rem;
+    border-radius: 10rem;
+    background-color: black;
+}
