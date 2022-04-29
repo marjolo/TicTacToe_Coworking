@@ -16,3 +16,22 @@ hr {
     border-radius: 10rem;
     background-color: black;
 }
+
+#board {
+    max-width: 450px;
+    max-height: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile {
+    width: 147px;
+    height: 147px;
+
+    /* Text */
+    font-size: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
