@@ -18,8 +18,12 @@ hr {
 }
 
 #board {
+    width: 450px;
+    height: 450px;
+    /*
     max-width: 450px;
     max-height: 450px;
+     */
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -34,4 +38,12 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.horizontal-line {
+    border-bottom: 3px solid black;
+}
+
+.vertical-line {
+    border-right: 3px solid black;
 }
