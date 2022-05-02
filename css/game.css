@@ -1,9 +1,16 @@
 .header {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
 }
 .icons {
     width: 5em;
+}
+h1 {
+    text-align: center;
+}
+img {
+    margin: auto;
 }
 #score {
     background: rgba(255,255,255,0.6);
@@ -12,7 +19,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     text-align: center;
-    margin-right: 1rem;
+    
 }
 #score > p {
     margin: .5rem .5rem;
@@ -24,3 +31,16 @@
 #scoreMario {
     color: yellow;
 }
+#buttons {
+    text-align: center;
+}
+/*
+#resetButton {
+    
+    background: url('../svg/Reset.svg') no-repeat;
+    background-size: cover;
+}
+#menuButton {
+
+}
+*/
