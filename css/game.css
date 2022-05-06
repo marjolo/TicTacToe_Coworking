@@ -1,7 +1,18 @@
+html {
+    font-size: 62.5%;
+}
+
+h1{
+    font-size: 5rem;
+    margin-bottom: 5rem;
+}
 .header {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
+}
+body{
+    text-align: center;
 }
 .icons {
     width: 5em;
@@ -11,6 +22,29 @@ h1 {
 }
 img {
     margin: auto;
+}
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 90vw;
+}
+.tile {
+    min-width: 14rem;
+    min-height: 14rem;
+
+    font-size: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+.horizontal-line {
+    border-bottom: 0.3rem solid black;
+}
+
+.vertical-line {
+    border-right: 0.3rem solid black;
 }
 #score {
     background: rgba(255,255,255,0.6);
@@ -33,15 +67,6 @@ img {
 }
 #buttons {
     text-align: center;
-}
-
-#board {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    width: 90vw;
-}
-.squares {
-    width: 100%;
 }
 /*
 #resetButton {
