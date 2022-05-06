@@ -9,8 +9,7 @@
 }
 
 html {
-    height: 100vh;
-    background: var(--bg);
+    background: var(--bg) no-repeat;
     font-family: Mario;
 }
 p {

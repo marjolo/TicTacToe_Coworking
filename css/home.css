@@ -1,6 +1,4 @@
-body {
-    max-width: 100vw;
-}
+
 figure img:nth-child(1){
     display: block;
     margin-left: auto;
@@ -41,6 +39,10 @@ a img{
 .buizen img{
     margin-top: -4em;
 }
+
+
+
+
 
 
 
