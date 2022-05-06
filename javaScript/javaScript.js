@@ -1,11 +1,14 @@
 'use strict';
 
 (function() {
+    let resetKnop = document.querySelector("#resetButton");
     let board;
     let x = "X";
     let o = "O";
-    let current_player = x;
+    let beginSpeler = x;
+    let current_player = beginSpeler;
     let spelActief = true;
+
 
     window.onload = function (){
         console.log("Window loaded")
@@ -114,6 +117,25 @@
         }
 
     }
+    const reset = function() {
+        board = ['','','','','','','','',''];
+        spelActief = true;
+        let element = document.getElementById('board');
+        let children = element.children;
+        for(let i = 0; i < children.length; i++){
+            let child = children[i];
+            child.innerText = "";
+        }
+
+        if(beginSpeler === x){
+            beginSpeler = o;
+        }
+        else{
+            beginSpeler = x;
+        }
+        current_player = beginSpeler;
+    }
+    resetKnop.addEventListener('click', reset);
 
 
 })();
