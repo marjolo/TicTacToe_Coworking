@@ -75,16 +75,16 @@ img {
 #buttons {
     text-align: center;
 }
-/*
+
 #resetButton {
-    
-    background: url('../svg/Reset.svg') no-repeat;
-    background-size: cover;
+    background: url('../svg/Reset.svg') no-repeat center;
+    background-size: 100%;
+    text-indent: -9999px;
 }
 #menuButton {
 
 }
-*/
+
 @media (min-width: 75em) {
     #board {
         width: 75vh;
