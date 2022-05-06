@@ -37,13 +37,21 @@ img {
     align-items: center;
     cursor: pointer;
 }
+
+.value{
+    color: rgba(0, 0, 0, 0);
+}
+.valueShow{
+    color: rgba(0, 0, 0, 1);
+}
+
 .horizontal-line {
     border-bottom: 0.3rem solid black;
 }
-
 .vertical-line {
     border-right: 0.3rem solid black;
 }
+
 #score {
     background: rgba(255,255,255,0.6);
     border-radius: 20px;
