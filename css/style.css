@@ -38,3 +38,10 @@ h1{
 .vertical-line {
     border-right: 0.3rem solid black;
 }
+
+.value{
+    color: rgba(0, 0, 0, 0);
+}
+.valueShow{
+    color: rgba(0, 0, 0, 1);
+}
