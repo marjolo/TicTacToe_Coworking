@@ -38,10 +38,10 @@ img {
 #board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    width: 90vw;
 }
 .squares {
-    width: 9rem;
-    height: 9rem;
+    width: 100%;
 }
 /*
 #resetButton {
