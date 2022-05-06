@@ -68,13 +68,6 @@
             }
         }
 
-<<<<<<< HEAD
-        let coords = this.id.split("");    //"1-2" -> ["1", "2'"]
-        //let r = parseInt(coords[0]);
-        //let k = parseInt(coords[1]);
-=======
-
->>>>>>> 1f2ec45a908601d9cb832f83e2503d8da9820796
 
     }
 
