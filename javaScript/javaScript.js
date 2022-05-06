@@ -55,6 +55,7 @@
         let r = parseInt(coords[0]);
         let k = parseInt(coords[1]);
 
+
         if (this.innerHTML === "-" && spelActief) {
             this.classList.add("valueShow");
 
