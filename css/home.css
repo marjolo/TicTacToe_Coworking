@@ -1,0 +1,48 @@
+body {
+    max-width: 100vw;
+}
+figure img:nth-child(1){
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5em;
+    width: 20%;
+}
+
+figure img:nth-child(2){
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6em;
+    z-index: -1;
+}
+
+figure img:nth-child(3){
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    margin-top: -19em;
+}
+
+a img{
+    background: rgba(255, 255, 255, 0.72);
+    background-blend-mode: lighten;
+    border-radius: 10px;
+    padding: 1em;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    width: 20%;
+}
+
+.buizen img{
+    margin-top: -4em;
+}
+
+
+
+
+
