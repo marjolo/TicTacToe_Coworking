@@ -11,6 +11,7 @@
 html {
     background: var(--bg) no-repeat;
     font-family: Mario;
+    height: 100vh;
 }
 p {
     font-size: 2rem;

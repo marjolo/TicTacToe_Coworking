@@ -3,9 +3,12 @@ html {
 }
 
 h1{
+    display: block;
     font-size: 4rem;
     margin-bottom: 5rem;
-    text-align: center;
+    margin: auto 0;
+    background: url("../svg/Titel\ game\ mobile.svg") no-repeat center;
+    text-indent: -99999px;   
 }
 .header {
     display: grid;
