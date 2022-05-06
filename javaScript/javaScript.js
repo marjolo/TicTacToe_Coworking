@@ -58,8 +58,7 @@
                 board[positie] = current_player;
 
                 console.log(positie);
-
-                current_player = o;
+                
             }
             else if (current_player === o){
                 this.innerHTML = o;
@@ -67,9 +66,9 @@
                 board[positie] = current_player;
                 console.log(positie);
 
-                current_player = x;
             }
             winnen();
+            current_player === x? current_player = o : current_player = x;
         }
 
     }
@@ -107,7 +106,7 @@
         else if(!board.includes("")){
             console.log("tie")
         }
-        
+
     }
 
 
