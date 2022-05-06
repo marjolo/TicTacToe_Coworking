@@ -120,11 +120,14 @@
     const reset = function() {
         board = ['','','','','','','','',''];
         spelActief = true;
-        let element = document.getElementById('board');
-        let children = element.children;
-        for(let i = 0; i < children.length; i++){
-            let child = children[i];
-            child.innerText = "";
+        let smallBoard = document.querySelectorAll('.games');
+        for (let i = 0; i < smallBoard.length; i++) {
+            let game = smallBoard[i];
+            let children = game.children;
+            for(let i = 0; i < children.length; i++){
+                let child = children[i]; //games
+                child.innerText = "";
+            }
         }
 
         if(beginSpeler === x){
