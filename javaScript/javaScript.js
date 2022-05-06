@@ -13,11 +13,7 @@
 
     function setBoard() {
 
-        board = [
-            [' ', ' ', ' '],
-            [' ', ' ', ' '],
-            [' ', ' ', ' ']
-        ]
+        board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 
 
         for (let r = 0; r < 3; r++){
@@ -40,29 +36,39 @@
             }
         }
 
-        console.log("Board set")
+        console.log("Board set");
     }
 
     function setTile() {
-        console.log("tile cliked")
+        console.log("tile cliked");
         //console.log(this);
 
+        let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
+        let r = parseInt(coords[0]);
+        let k = parseInt(coords[1]);
 
         if (this.innerHTML === " "){
             //this.innerHTML;
             if (current_player === x){
                 this.innerHTML = x;
+                const positie = r * 3 + k;
+                board[positie] = current_player;
+
+                console.log(positie);
+
                 current_player = o;
             }
             else if (current_player === o){
                 this.innerHTML = o;
+                const positie = r * 3 + k;
+                board[positie] = current_player;
+                console.log(positie);
+
                 current_player = x;
             }
         }
 
-        let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
-        //let r = parseInt(coords[0]);
-        //let k = parseInt(coords[1]);
+
 
     }
 
