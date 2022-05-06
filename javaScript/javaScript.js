@@ -9,10 +9,16 @@
 
     window.onload = function (){
         console.log("Window loaded")
-        setBoard();
+        setBoards();
     }
 
-    function setBoard() {
+    function setBoards() {
+        for (let i = 0; i < 9; i++) {
+            setBoard(document.querySelector(`#game${i}`));
+        }
+    }
+
+    function setBoard(div) {
 
         board = ['', '', '', '', '', '', '', '', ''];
 
@@ -21,13 +27,8 @@
             for (let k = 0; k < 3; k++){
                 //<div id="0-0" class="tile"></div>
                 let tile = document.createElement("div");
-                let value = document.createElement("span");
-
                 tile.id = r.toString() + "-" + k.toString();
-                value.id = r.toString() + "=" + k.toString();
-
                 tile.classList.add("tile");
-                value.classList.add("value");
 
                 if (r === 0 || r === 1) {
                     tile.classList.add("horizontal-line");
@@ -36,10 +37,9 @@
                     tile.classList.add("vertical-line");
                 }
 
-                value.innerText = "-";
-                value.addEventListener('click', setTile);
-                document.getElementById("board").append(tile);
-                document.getElementById(r.toString() + "-" + k.toString()).append(value);
+                tile.innerText = "";
+                tile.addEventListener('click', setTile);
+                div.append(tile);
             }
         }
 
@@ -51,13 +51,11 @@
         console.log("tile clicked");
         //console.log(this);
 
-        let coords = this.id.split("=");    //"1-2" -> ["1", "2'"]
+        let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
         let r = parseInt(coords[0]);
         let k = parseInt(coords[1]);
 
-
-        if (this.innerHTML === "-" && spelActief) {
-            this.classList.add("valueShow");
+        if (this.innerHTML === "" && spelActief) {
 
             //this.innerHTML;
             if (current_player === x){
@@ -66,7 +64,7 @@
                 board[positie] = current_player;
 
                 console.log(positie);
-
+                
             }
             else if (current_player === o){
                 this.innerHTML = o;
