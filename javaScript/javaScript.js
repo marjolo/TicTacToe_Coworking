@@ -60,7 +60,7 @@
             }
         }
 
-        let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
+        let coords = this.id.split("");    //"1-2" -> ["1", "2'"]
         //let r = parseInt(coords[0]);
         //let k = parseInt(coords[1]);
 
