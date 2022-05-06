@@ -9,10 +9,16 @@
 
     window.onload = function (){
         console.log("Window loaded")
-        setBoard();
+        setBoards();
     }
 
-    function setBoard() {
+    function setBoards() {
+        for (let i = 0; i < 9; i++) {
+            setBoard(document.querySelector(`#game${i}`));
+        }
+    }
+
+    function setBoard(div) {
 
         board = ['', '', '', '', '', '', '', '', ''];
 
@@ -33,7 +39,7 @@
 
                 tile.innerText = "";
                 tile.addEventListener('click', setTile);
-                document.querySelector("#board").append(tile);
+                div.append(tile);
             }
         }
 
