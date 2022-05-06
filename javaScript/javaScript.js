@@ -33,7 +33,7 @@
 
                 tile.innerText = "";
                 tile.addEventListener('click', setTile);
-                document.getElementById("board").append(tile);
+                document.querySelector("#board").append(tile);
             }
         }
 
