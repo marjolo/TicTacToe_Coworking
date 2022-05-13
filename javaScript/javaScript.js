@@ -107,9 +107,13 @@
             }
         }
         if(winRonde){
-            spelActief = false;
-            console.log(current_player + "wint")
+            if (current_player === x) {
 
+            }
+            else {
+
+            }
+            console.log(current_player + "wint")
 
         }
         else if(!board.includes("")){
@@ -139,6 +143,9 @@
         current_player = beginSpeler;
     }
     resetKnop.addEventListener('click', reset);
+
+    const disableBoard = function(boardNum) {
+    }
 
 
 })();
