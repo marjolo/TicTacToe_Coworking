@@ -62,6 +62,7 @@
 
             //this.innerHTML;
             if (current_player === x){
+                const positie = r * 3 + k;
                 if(plaatsen(1)) {
                     board[positie] = current_player;
                     this.innerHTML = x;
@@ -70,6 +71,7 @@
                 
             }
             else if (current_player === o){
+                const positie = r * 3 + k;
                 if(plaatsen(1)) {
                     board[positie] = current_player;
                     this.innerHTML = o;
