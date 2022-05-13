@@ -30,7 +30,7 @@
             for (let k = 0; k < 3; k++){
                 //<div id="0-0" class="tile"></div>
                 let tile = document.createElement("div");
-                tile.id = r.toString() + "-" + k.toString();
+                tile.id = r.toString() + "-" + k.toString() + "/" + div.id;
                 tile.classList.add("tile");
 
                 if (r === 0 || r === 1) {
@@ -52,7 +52,7 @@
 
     function setTile() {
         console.log("tile clicked");
-        //console.log(this);
+        console.log("ID: " + this.id);
 
         let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
         let r = parseInt(coords[0]);
@@ -60,13 +60,12 @@
 
         if (this.innerHTML === "" && spelActief) {
 
-            //this.innerHTML;
             if (current_player === x){
                 this.innerHTML = x;
                 const positie = r * 3 + k;
                 board[positie] = current_player;
 
-                console.log(positie);
+                //console.log(positie);
                 
             }
             else if (current_player === o){
@@ -76,7 +75,7 @@
                 console.log(positie);
 
             }
-            winnen();
+            winnen(this.id);
             current_player === x? current_player = o : current_player = x;
         }
 
@@ -91,7 +90,7 @@
         [0, 4, 8],
         [2, 4, 6]
     ]
-    const winnen = function () {
+    const winnen = function (idChild) {
         let winRonde = false;
         for(let i = 0; i < 8; i++){
             const winConditie = winCondities[i];
@@ -109,6 +108,19 @@
         if(winRonde){
             spelActief = false;
             console.log(current_player + "wint")
+
+            console.log(idChild);
+            const child = document.getElementById(idChild);
+            const parent = child.parentElement;
+            console.log(parent.id);
+
+            if (current_player === "X"){
+                child.parentElement.classList.add('xWint');
+                console.log("X vak gekleurd");
+            } else if (current_player === "O"){
+                child.parentElement.classList.add('oWint');
+                console.log("O vak gekleurd");
+            }
 
 
         }

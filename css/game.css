@@ -55,6 +55,14 @@ main {
     cursor: pointer;
 }
 
+.xWint{
+    background-color: #fe1028;
+}
+
+.oWint{
+    background-color: #FFBA28;
+}
+
 .horizontal-line {
     border-bottom: 0.3rem solid black;
 }
