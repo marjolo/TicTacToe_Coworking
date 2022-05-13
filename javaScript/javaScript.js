@@ -81,7 +81,7 @@
                 }
 
             }
-            spelWinnen();
+            spelWinnen(this.id);
             current_player === x? current_player = o : current_player = x;
         }
 
@@ -104,11 +104,11 @@
         [2, 4, 6]
     ]
     let spelBoard = ['','','','','','','','',''];
-    const spelWinnen = function () {
+    const spelWinnen = function (ID) {
         let winSpel = false;
         for(let i = 0; i < spelBoard.length; i++){
             //let game = document.getElementById(`#game${i}`);
-            winnen(i);
+            winnen(i, ID);
         }
         for(let i = 0; i < 8; i++){
             const winConditie = winCondities[i];
@@ -134,7 +134,7 @@
         }
 
     }
-    const winnen = function (index) {
+    const winnen = function (index, idChild) {
         let winRonde = false;
         for(let i = 0; i < 8; i++){
             const winConditie = winCondities[i];
@@ -152,6 +152,20 @@
         if(winRonde){
             spelBoard[index] = current_player;
             console.log("ronde gewonnen");
+
+            console.log(idChild);
+            const child = document.getElementById(idChild);
+            const parent = child.parentElement;
+            console.log(parent.id);
+
+            if (current_player === "X"){
+                child.parentElement.classList.add('xWint');
+                console.log("X vak gekleurd");
+            } else if (current_player === "O"){
+                child.parentElement.classList.add('oWint');
+                console.log("O vak gekleurd");
+            }
+
         }
         else if(!board.includes("")){
             console.log("tie");
