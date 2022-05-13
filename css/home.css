@@ -35,8 +35,35 @@ a img{
     margin-top: 2em;
     max-width: 50%;
 }
-
-.spelregels{
+#buttons {
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+#buttons div {
+    background-color:  rgba(255,255,255,0.6);
+    padding: .5rem 2rem;
+    border-radius: 8px;
+    margin: 1.2rem 0;
+}
+#buttons button {
+    width: 8rem;
+    height: auto;
+}
+#singleplayer {
+    background: url('../svg/Singleplayer.svg') no-repeat center;
+    background-size: 100%;
+    text-indent: -9999px;
+}
+#multiplayer {
+    background: url('../svg/Multiplayer.svg') no-repeat center;
+    background-size: 100%;
+    text-indent: -9999px;
+}
+#spelregels{
+    background: url('../svg/Spelregels.svg') no-repeat center;
+    background-size: 100%;
+    text-indent: -9999px;
 }
 
 .buizen img{
