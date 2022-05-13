@@ -10,6 +10,7 @@
 
 html {
     background: var(--bg) no-repeat;
+    height: 100%;
 }
 
 p {
