@@ -19,6 +19,10 @@ h1{
 img {
     margin: auto;
 }
+
+main {
+    margin-top: 5rem;
+}
 #board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -26,7 +30,7 @@ img {
     height: 90vw;
     margin: 2rem auto;
     gap: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 6rem;
 }
 .games {
     display: grid;
@@ -82,18 +86,31 @@ img {
 }
 #buttons {
     text-align: center;
+    width: fit-content;
+    display: flex;
+    gap: 2rem;
+    margin: 0 auto;
 }
-
-/*
+#buttons div {
+    background-color:  rgba(255,255,255,0.6);
+    padding: 1rem;
+    border-radius: 8px;
+}
+#buttons button {
+    width: 8rem;
+    height: auto;
+}
 #resetButton {
     background: url('../svg/Reset.svg') no-repeat center;
     background-size: 100%;
     text-indent: -9999px;
 }
 #menuButton {
-
+    background: url('../svg/Menu.svg') no-repeat center;
+    background-size: 100%;
+    text-indent: -9999px;
 }
-*/
+
 
 @media (min-width: 75em) {
     #board {

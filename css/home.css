@@ -4,7 +4,7 @@ figure img:nth-child(1){
     margin-left: auto;
     margin-right: auto;
     margin-top: 5em;
-    width: 20%;
+    max-width: 70%;
 }
 
 figure img:nth-child(2){
@@ -33,11 +33,14 @@ a img{
     margin-left: auto;
     margin-right: auto;
     margin-top: 2em;
-    width: 20%;
+    max-width: 50%;
+}
+
+.spelregels{
 }
 
 .buizen img{
-    margin-top: -4em;
+    margin-top: -3em;
 }
 
 
