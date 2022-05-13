@@ -62,24 +62,32 @@
 
             //this.innerHTML;
             if (current_player === x){
-                this.innerHTML = x;
-                const positie = r * 3 + k;
-                board[positie] = current_player;
-
-                console.log(positie);
+                if(plaatsen(1)) {
+                    board[positie] = current_player;
+                    this.innerHTML = x;
+                    console.log(positie);
+                }
                 
             }
             else if (current_player === o){
-                this.innerHTML = o;
-                const positie = r * 3 + k;
-                board[positie] = current_player;
-                console.log(positie);
+                if(plaatsen(1)) {
+                    board[positie] = current_player;
+                    this.innerHTML = o;
+                    console.log(positie);
+                }
 
             }
-            winnen();
+            spelWinnen();
             current_player === x? current_player = o : current_player = x;
         }
 
+    }
+    const plaatsen = function (index) {
+        if (spelBoard[index] === x || spelBoard[index] === o){
+            return false;
+        }
+
+        return true;
     }
     const winCondities = [
         [0, 1, 2],
@@ -91,7 +99,38 @@
         [0, 4, 8],
         [2, 4, 6]
     ]
-    const winnen = function () {
+    let spelBoard = ['','','','','','','','',''];
+    const spelWinnen = function () {
+        let winSpel = false;
+        for(let i = 0; i < spelBoard.length; i++){
+            //let game = document.getElementById(`#game${i}`);
+            winnen(i);
+        }
+        for(let i = 0; i < 8; i++){
+            const winConditie = winCondities[i];
+            const a = spelBoard[winConditie[0]];
+            const b = spelBoard[winConditie[1]];
+            const c = spelBoard[winConditie[2]];
+            if(a === "" || b === "" || c === ""){
+                winSpel = false;
+            }
+            else if(a === b && b === c){
+                winSpel = true;
+                break;
+            }
+        }
+
+        if(winSpel){
+            spelActief = false;
+            console.log(current_player + " wint")
+        }
+        else if(!spelBoard.includes("")){
+            spelActief = false;
+            console.log("tie")
+        }
+
+    }
+    const winnen = function (index) {
         let winRonde = false;
         for(let i = 0; i < 8; i++){
             const winConditie = winCondities[i];
@@ -107,22 +146,17 @@
             }
         }
         if(winRonde){
-            if (current_player === x) {
-
-            }
-            else {
-
-            }
-            console.log(current_player + "wint")
-
+            spelBoard[index] = current_player;
+            console.log("ronde gewonnen");
         }
         else if(!board.includes("")){
-            console.log("tie")
+            console.log("tie");
         }
 
     }
     const reset = function() {
         board = ['','','','','','','','',''];
+        spelBoard = ['','','','','','','','',''];
         spelActief = true;
         let smallBoard = document.querySelectorAll('.games');
         for (let i = 0; i < smallBoard.length; i++) {
