@@ -27,6 +27,7 @@ img {
     height: 90vw;
     margin: 2rem auto;
     gap: 2rem;
+    padding-bottom: 2rem;
 }
 .games {
     display: grid;
