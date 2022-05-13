@@ -4,7 +4,6 @@ html {
 
 h1{
     font-size: 4rem;
-    margin-bottom: 5rem;
     margin: auto 0;
     background: url("../svg/Titel\ game\ mobile.svg") no-repeat center;
     text-indent: -99999px;   
@@ -39,7 +38,8 @@ img {
 .tile {
     width: 100%;
     height: 100%;
-    font-size: 2rem;
+    min-height: 5rem;
+    font-size: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
