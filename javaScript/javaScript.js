@@ -179,9 +179,13 @@
         current_player = beginSpeler;
     }
     resetKnop.addEventListener('click', reset);
-
+    
     const disableBoard = function(boardNum) {
+        const boardToDisable = document.querySelector(`#game${boardNum}`);
+        const children = boardToDisable.children;
+        for (let i = 0; i < children.length; i++) {
+            children[i].removeEventListener('click', setTile);
+        }
     }
-
 
 })();
