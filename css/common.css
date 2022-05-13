@@ -10,9 +10,9 @@
 
 html {
     background: var(--bg) no-repeat;
-    font-family: Mario;
-    height: 100vh;
+    height: 100%;
 }
+
 p {
     font-size: 2rem;
     -webkit-text-stroke: 1.5px black;
