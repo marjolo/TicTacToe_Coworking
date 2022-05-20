@@ -198,6 +198,13 @@
                 child.innerText = "";
             }
         }
+        for (let i = 0; i < smallBoard.length; i++) {
+            const resetListener = document.querySelector(`#game${i}`);
+            const children = resetListener.children;
+            for (let i = 0; i < children.length; i++) {
+                children[i].addEventListener('click', setTile);
+            }
+        }
 
         if(beginSpeler === x){
             beginSpeler = o;
