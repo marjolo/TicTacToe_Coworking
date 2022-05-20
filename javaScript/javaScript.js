@@ -144,12 +144,14 @@ import AI from './AI.js';
                 counterX = bowser.innerHTML;
                 counterX++;
                 bowser.innerHTML = counterX
+                const myTimeout = setTimeout(reset, 1000);
             }
             else if(current_player === o){
                 let mario = document.getElementById('scoreMario');
                 counterO = mario.innerHTML;
                 counterO++;
                 mario.innerHTML = counterO;
+                const myTimeout = setTimeout(reset, 1000);
             }
         }
         else if(!spelBoard.includes("")){
@@ -207,6 +209,12 @@ import AI from './AI.js';
 
 
     const reset = function() {
+        if(!spelActief){
+            document.getElementById('scoreBowser').innerHTML = 0;
+            document.getElementById('scoreMario').innerHTML = 0;
+            spelActief = true;
+        }
+
         boards.forEach((element,index) =>{
             let bord = boards[index];
             bord.forEach((element,index) =>{
@@ -215,7 +223,7 @@ import AI from './AI.js';
             console.log(boards[index])
         })
         spelBoard = ['','','','','','','','',''];
-        spelActief = true;
+
         let smallBoard = document.querySelectorAll('.games');
         for (let i = 0; i < smallBoard.length; i++) {
             let game = smallBoard[i];
