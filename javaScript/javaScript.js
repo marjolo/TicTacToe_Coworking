@@ -1,3 +1,5 @@
+import AI from './AI.js';
+
 'use strict';
 
 (function() {
@@ -10,6 +12,8 @@
     let spelActief = true;
     let boards = [];
     let spelBoard = ['','','','','','','','',''];
+
+    let ai = new AI(0, o);
 
     window.onload = function (){
         console.log("Window loaded")
