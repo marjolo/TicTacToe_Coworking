@@ -91,6 +91,8 @@ import AI from './AI.js';
             }
             spelWinnen(this.id);
             current_player === x? current_player = o : current_player = x;
+
+            
         }
 
     }
