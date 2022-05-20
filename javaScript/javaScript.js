@@ -3,8 +3,8 @@
 (function() {
     let resetKnop = document.querySelector("#resetButton");
     let board;
-    let x = "X";
-    let o = "O";
+    let x = "X",counterX;
+    let o = "O",counterO;
     let beginSpeler = x;
     let current_player = beginSpeler;
     let spelActief = true;
@@ -132,6 +132,18 @@
         if(winSpel){
             spelActief = false;
             console.log(current_player + " wint")
+            if(current_player === x){
+                let bowser = document.getElementById('scoreBowser');
+                counterX = bowser.innerHTML;
+                counterX++;
+                bowser.innerHTML = counterX
+            }
+            else if(current_player === o){
+                let mario = document.getElementById('scoreMario');
+                counterO = mario.innerHTML;
+                counterO++;
+                mario.innerHTML = counterO;
+            }
         }
         else if(!spelBoard.includes("")){
             spelActief = false;
