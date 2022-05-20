@@ -15,10 +15,10 @@ import AI from './AI.js';
 
     let ai = new AI(0, o);
 
-    window.onload = function (){
-        console.log("Window loaded")
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("Window loaded");
         setBoards();
-    }
+    })
 
     function setBoards() {
         for (let i = 0; i < 9; i++) {
