@@ -9,6 +9,7 @@
     let current_player = beginSpeler;
     let spelActief = true;
     let boards = [];
+    let spelBoard = ['','','','','','','','',''];
 
     window.onload = function (){
         console.log("Window loaded")
@@ -107,7 +108,7 @@
         [0, 4, 8],
         [2, 4, 6]
     ]
-    let spelBoard = ['','','','','','','','',''];
+
 
     const spelWinnen = function (ID) {
         let winSpel = false;
@@ -199,8 +200,11 @@
 
     const reset = function() {
         boards.forEach((element,index) =>{
-            boards[index] = board;
-
+            let bord = boards[index];
+            bord.forEach((element,index) =>{
+                bord[index] = '';
+            })
+            console.log(boards[index])
         })
         spelBoard = ['','','','','','','','',''];
         spelActief = true;
