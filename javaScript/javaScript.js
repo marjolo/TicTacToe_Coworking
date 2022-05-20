@@ -8,7 +8,7 @@
     let beginSpeler = x;
     let current_player = beginSpeler;
     let spelActief = true;
-
+    let boards = [];
 
     window.onload = function (){
         console.log("Window loaded")
@@ -19,12 +19,13 @@
         for (let i = 0; i < 9; i++) {
             setBoard(document.querySelector(`#game${i}`));
         }
+        console.log(boards)
     }
 
     function setBoard(div) {
 
         board = ['', '', '', '', '', '', '', '', ''];
-
+        boards.push(board);
 
         for (let r = 0; r < 3; r++){
             for (let k = 0; k < 3; k++){
@@ -57,6 +58,8 @@
         let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
         let r = parseInt(coords[0]);
         let k = parseInt(coords[1]);
+        let game = document.getElementById(`game${r}`);
+        let bord = boards[this.id.slice(-1)];
 
         if (this.innerHTML === "" && spelActief) {
 
@@ -64,20 +67,20 @@
             if (current_player === x){
                 this.innerHTML = x;
                 const positie = r * 3 + k;
-                if(plaatsen(1)) {
-                    board[positie] = current_player;
+                if(plaatsen(this.id.slice(-1))) {
+                    bord[positie] = current_player;
                     this.innerHTML = x;
-                    console.log(positie);
+                    console.log(this.id.slice(-1));
                 }
-                
+
             }
             else if (current_player === o){
                 this.innerHTML = o;
                 const positie = r * 3 + k;
-                if(plaatsen(1)) {
-                    board[positie] = current_player;
+                if(plaatsen(this.id.slice(-1))) {
+                    bord[positie] = current_player;
                     this.innerHTML = o;
-                    console.log(positie);
+                    console.log(this.id.slice(-1));
                 }
 
             }
@@ -87,10 +90,11 @@
 
     }
     const plaatsen = function (index) {
-        if (spelBoard[index] === x || spelBoard[index] === o){
+        if (spelBoard[index] === "X" || spelBoard[index] === "O"){
+            console.log('kan niet')
             return false;
         }
-
+        console.log('ok')
         return true;
     }
     const winCondities = [
@@ -104,10 +108,11 @@
         [2, 4, 6]
     ]
     let spelBoard = ['','','','','','','','',''];
+
     const spelWinnen = function (ID) {
         let winSpel = false;
         for(let i = 0; i < spelBoard.length; i++){
-            //let game = document.getElementById(`#game${i}`);
+            //let game = document.getElementById(`game${i}`);
             winnen(i, ID);
         }
         for(let i = 0; i < 8; i++){
@@ -136,11 +141,15 @@
     }
     const winnen = function (index, idChild) {
         let winRonde = false;
+        let activeBoard = boards[index];
+        console.log(index)
+        console.log(activeBoard)
         for(let i = 0; i < 8; i++){
             const winConditie = winCondities[i];
-            const a = board[winConditie[0]];
-            const b = board[winConditie[1]];
-            const c = board[winConditie[2]];
+            const a = activeBoard[winConditie[0]];
+            const b = activeBoard[winConditie[1]];
+            const c = activeBoard[winConditie[2]];
+
             if(a === "" || b === "" || c === ""){
                 winRonde = false;
             }
@@ -149,10 +158,12 @@
                 break;
             }
         }
+        console.log(winRonde)
         if(winRonde){
-            spelBoard[index] = current_player;
-            console.log("ronde gewonnen");
 
+            spelBoard[index] = current_player;
+            console.log(spelBoard);
+            console.log(index)
             console.log(idChild);
             const child = document.getElementById(idChild);
             const parent = child.parentElement;
@@ -165,13 +176,15 @@
                 child.parentElement.classList.add('oWint');
                 console.log("O vak gekleurd");
             }
-
+            disableBoard(index);
         }
         else if(!board.includes("")){
             console.log("tie");
         }
 
     }
+
+
     const reset = function() {
         board = ['','','','','','','','',''];
         spelBoard = ['','','','','','','','',''];
@@ -200,7 +213,7 @@
         }
     }
     resetKnop.addEventListener('click', reset);
-    
+
     const disableBoard = function(boardNum) {
         const boardToDisable = document.querySelector(`#game${boardNum}`);
         const children = boardToDisable.children;
