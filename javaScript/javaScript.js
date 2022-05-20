@@ -198,7 +198,10 @@
 
 
     const reset = function() {
-        board = ['','','','','','','','',''];
+        boards.forEach((element,index) =>{
+            boards[index] = board;
+
+        })
         spelBoard = ['','','','','','','','',''];
         spelActief = true;
         let smallBoard = document.querySelectorAll('.games');
