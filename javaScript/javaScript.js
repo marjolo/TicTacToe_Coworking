@@ -179,19 +179,21 @@ import AI from './AI.js';
         if(winRonde){
 
             spelBoard[index] = current_player;
-            console.log(spelBoard);
-            console.log(index)
             console.log(idChild);
             const child = document.getElementById(idChild);
             const parent = child.parentElement;
             console.log(parent.id);
-
-            if (current_player === "X"){
-                child.parentElement.classList.add('xWint');
-                console.log("X vak gekleurd");
-            } else if (current_player === "O"){
-                child.parentElement.classList.add('oWint');
-                console.log("O vak gekleurd");
+            let gameIndex = 'game' + index;
+            console.log(gameIndex)
+            console.log(index)
+            if(parent.id === gameIndex){
+                if (current_player === "X"){
+                    parent.classList.add('xWint');
+                    console.log("X vak gekleurd");
+                } else if (current_player === "O"){
+                    parent.classList.add('oWint');
+                    console.log("O vak gekleurd");
+                }
             }
             disableBoard(index);
         }
