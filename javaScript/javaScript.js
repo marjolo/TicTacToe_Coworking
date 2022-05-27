@@ -71,6 +71,7 @@ import AI from './AI.js';
             //this.innerHTML;
             if (current_player === x){
                 this.innerHTML = x;
+                this.classList.add('tileAnimation');
                 const positie = r * 3 + k;
                 if(plaatsen(this.id.slice(-1))) {
                     bord[positie] = current_player;
@@ -81,6 +82,7 @@ import AI from './AI.js';
             }
             else if (current_player === o){
                 this.innerHTML = o;
+                this.classList.add('tileAnimation');
                 const positie = r * 3 + k;
                 if(plaatsen(this.id.slice(-1))) {
                     bord[positie] = current_player;
@@ -96,6 +98,7 @@ import AI from './AI.js';
         }
 
     }
+
     const plaatsen = function (index) {
         if (spelBoard[index] === "X" || spelBoard[index] === "O"){
             console.log('kan niet')
@@ -114,7 +117,6 @@ import AI from './AI.js';
         [0, 4, 8],
         [2, 4, 6]
     ]
-
 
     const spelWinnen = function (ID) {
         let winSpel = false;
@@ -144,23 +146,24 @@ import AI from './AI.js';
                 counterX = bowser.innerHTML;
                 counterX++;
                 bowser.innerHTML = counterX
-                const myTimeout = setTimeout(reset, 1000);
+                const myTimeout = setTimeout(reset, 3000);
             }
             else if(current_player === o){
                 let mario = document.getElementById('scoreMario');
                 counterO = mario.innerHTML;
                 counterO++;
                 mario.innerHTML = counterO;
-                const myTimeout = setTimeout(reset, 1000);
+                const myTimeout = setTimeout(reset, 3000);
             }
         }
         else if(!spelBoard.includes("")){
             spelActief = false;
             console.log("tie")
-            const myTimeout = setTimeout(reset, 1000);
+            const myTimeout = setTimeout(reset, 3000);
         }
 
     }
+
     const winnen = function (index, idChild) {
         let winRonde = false;
         let activeBoard = boards[index];
@@ -217,7 +220,6 @@ import AI from './AI.js';
 
     }
 
-
     const reset = function() {
 
         boards.forEach((element,index) =>{
@@ -271,6 +273,7 @@ import AI from './AI.js';
             children[i].removeEventListener('click', setTile);
         }
     }
+
     const puntenReset = function () {
         document.getElementById('scoreBowser').innerHTML = 0;
         document.getElementById('scoreMario').innerHTML = 0;

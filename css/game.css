@@ -48,19 +48,30 @@ main {
     height: 100%;
     min-height: 5rem;
 
-    font-size: 3rem;
+    font-size: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
 }
 
+.tileAnimation{
+    transition: 750ms cubic-bezier(0,.87,.63,2);
+    font-size: 3rem;
+}
+
 .xWint{
     background-color: #fe1028;
+    border-radius: 3rem;
+
+    transition: 1s;
 }
 
 .oWint{
     background-color: #FFBA28;
+    border-radius: 3rem;
+
+    transition: 1s;
 }
 
 .horizontal-line {
