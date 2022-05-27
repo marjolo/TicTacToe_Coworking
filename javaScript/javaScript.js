@@ -63,7 +63,7 @@ import AI from './AI.js';
         let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
         let r = parseInt(coords[0]);
         let k = parseInt(coords[1]);
-        let game = document.getElementById(`game${r}`);
+        //let game = document.getElementById(`game${r}`);
         let bord = boards[this.id.slice(-1)];
 
         if (this.innerHTML === "" && spelActief) {
@@ -130,7 +130,7 @@ import AI from './AI.js';
             if(a === "" || b === "" || c === ""){
                 winSpel = false;
             }
-            else if(a === b && b === c){
+            else if(a === b && b === c && a !== "T" && b !== "T" && c !== "T"){
                 winSpel = true;
                 break;
             }
@@ -157,6 +157,7 @@ import AI from './AI.js';
         else if(!spelBoard.includes("")){
             spelActief = false;
             console.log("tie")
+            const myTimeout = setTimeout(reset, 1000);
         }
 
     }
@@ -200,20 +201,24 @@ import AI from './AI.js';
                 }
             }
             disableBoard(index);
+            let bord = boards[index];
+            bord.forEach((element,index) =>{
+                bord[index] = '';
+            })
         }
-        else if(!board.includes("")){
+        else if(!boards[index].includes("")){
             console.log("tie");
+            let bord = boards[index];
+            bord.forEach((element,index) =>{
+                bord[index] = '';
+            })
+            spelBoard[index] = "T";
         }
 
     }
 
 
     const reset = function() {
-        if(!spelActief){
-            document.getElementById('scoreBowser').innerHTML = 0;
-            document.getElementById('scoreMario').innerHTML = 0;
-            spelActief = true;
-        }
 
         boards.forEach((element,index) =>{
             let bord = boards[index];
@@ -223,7 +228,7 @@ import AI from './AI.js';
             console.log(boards[index])
         })
         spelBoard = ['','','','','','','','',''];
-
+        spelActief = true;
         let smallBoard = document.querySelectorAll('.games');
         for (let i = 0; i < smallBoard.length; i++) {
             let game = smallBoard[i];
@@ -254,7 +259,10 @@ import AI from './AI.js';
             game.classList.remove('xWint', 'oWint');
         }
     }
-    resetKnop.addEventListener('click', reset);
+    resetKnop.addEventListener('click', function(){
+        reset();
+        puntenReset();
+    });
 
     const disableBoard = function(boardNum) {
         const boardToDisable = document.querySelector(`#game${boardNum}`);
@@ -263,5 +271,8 @@ import AI from './AI.js';
             children[i].removeEventListener('click', setTile);
         }
     }
-
+    const puntenReset = function () {
+        document.getElementById('scoreBowser').innerHTML = 0;
+        document.getElementById('scoreMario').innerHTML = 0;
+    }
 })();
