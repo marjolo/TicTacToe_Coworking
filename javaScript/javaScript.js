@@ -13,7 +13,7 @@ import AI from './AI.js';
     let boards = [];
     let spelBoard = ['','','','','','','','',''];
 
-    let ai = new AI(0, o);
+    let ai = new AI(o);
 
     document.addEventListener('DOMContentLoaded', () => {
         console.log("Window loaded");
@@ -78,6 +78,7 @@ import AI from './AI.js';
                     this.innerHTML = x;
                     console.log(this.id.slice(-1));
                 }
+                console.log(ai.getBestMove(Object.assign([], bord)));
 
             }
             else if (current_player === o){
@@ -167,8 +168,6 @@ import AI from './AI.js';
     const winnen = function (index, idChild) {
         let winRonde = false;
         let activeBoard = boards[index];
-        console.log(index)
-        console.log(activeBoard)
         for(let i = 0; i < 8; i++){
             const winConditie = winCondities[i];
             const a = activeBoard[winConditie[0]];
@@ -183,7 +182,6 @@ import AI from './AI.js';
                 break;
             }
         }
-        console.log(winRonde)
         if(winRonde){
 
             spelBoard[index] = current_player;
