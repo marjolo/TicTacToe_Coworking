@@ -25,7 +25,7 @@ h2{
 
 .textDIV{
     max-width: 40rem;
-    margin: auto auto 3rem;
+    margin: -25rem auto 3rem;
     padding: 2rem;
     text-align: left;
 
@@ -68,6 +68,25 @@ p{
     margin: auto auto 3rem;
 }
 
+.figures{
+    display: flex;
+    justify-content: space-between;
+    margin-top: -4rem;
+    gap: 45rem;
+
+    overflow: hidden;
+}
+
+.figures img:nth-child(1){
+    margin: auto 0 auto 0;
+    min-width: 20%;
+}
+
+.figures img:nth-child(2){
+    display: block;
+    margin-top: -1rem;
+}
+
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -97,5 +116,14 @@ p{
     }
     p{
         font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    .figures{
+        display: none;
+    }
+    .textDIV{
+        margin: auto auto 3rem;
     }
 }
