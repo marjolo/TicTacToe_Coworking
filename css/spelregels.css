@@ -1,24 +1,101 @@
+html{
+    background-color: #40FF53;
+    /*#40FF53*/
+}
+
 body{
+    background: linear-gradient(#37E0E0, #40FF53);;
+}
+
+@font-face {
+    font-family: Quick;
+    src: url('../font/Quicksand-VariableFont_wght.ttf');
 }
 
 h1{
-    font-size: 3rem;
+    font-size: 4rem;
     margin: 5rem;
     text-align: center;
 }
-div{
+h2{
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.textDIV{
     max-width: 40rem;
-    margin: auto;
+    margin: auto auto 3rem;
+    padding: 2rem;
     text-align: left;
 
-    border: 5px solid #FFFF00;
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
 p{
-    font-size: 1rem;
+    font-family: Quick, serif;
+
+    font-size: 1.5rem;
     -webkit-text-stroke: 0.5px black;
-    font-weight: lighter;
+    font-weight: 300;
+
+    /*line-height: 1.5rem;*/
+    /*letter-spacing: 2px;*/
+}
+
+#menuButton {
+    width: 8rem;
+    height: auto;
+
+    border: none;
+    padding: 0.5rem 1.5rem;
+
+    background: url('../svg/Menu.svg') no-repeat center;
+    background-size: 100%;
+    text-indent: -9999px;
+}
+
+.buttonDIV{
+    text-align: center;
+
+    background-color: rgba(255,255,255,0.6);
+    padding: 1rem;
+    border-radius: 8px;
+
+    width: 8rem;
+    margin: auto auto 3rem;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+}
+::-webkit-scrollbar-thumb:hover{
+    background: rgba(0,0,0,0.4);
+}
+::-webkit-scrollbar-thumb:active{
+    background: rgba(0,0,0,.9);
+}
+
+@media only screen and (max-width: 500px) {
+    h1{
+        font-size: 2.5rem;
+        margin: 2rem 2rem 0;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+    p{
+        font-size: 1rem;
+    }
 }
