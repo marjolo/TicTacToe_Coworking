@@ -3,33 +3,38 @@ import AI from './AI.js';
 'use strict';
 
 (function() {
+    const uitkomsten = {
+        X: 'X',
+        O: 'O',
+        TIE: 'T',
+        NONE: ''
+    }
     let resetKnop = document.querySelector("#resetButton");
     let menuKnop = document.getElementById('menuButton');
     let board;
-    let x = "X",counterX;
-    let o = "O",counterO;
+    let x = uitkomsten.X,counterX;
+    let o = uitkomsten.O,counterO;
     let beginSpeler = x;
     let current_player = beginSpeler;
     let spelActief = true;
     let boards = [];
-    let spelBoard = ['','','','','','','','',''];
+    let bigBoardConvertedToSingle = ['', '', '', '', '', '', '', '', ''];
+    let ai = new AI(o);
 
     document.addEventListener('DOMContentLoaded', () => {
-        console.log("Window loaded");
         setBoards();
-    })
+    });
 
     menuKnop.addEventListener("click", () => {
         window.location.href = "../index.html";
-    })
+    });
+
 
     function setBoards() {
         for (let i = 0; i < 9; i++) {
             setBoard(document.querySelector(`#game${i}`));
         }
-        console.log(boards)
     }
-
     function setBoard(div) {
 
         board = ['', '', '', '', '', '', '', '', ''];
@@ -54,61 +59,59 @@ import AI from './AI.js';
                 div.append(tile);
             }
         }
-
-        console.log("Board set");
     }
 
 
     function setTile() {
-        console.log("tile clicked");
-        console.log("ID: " + this.id);
 
         let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
         let r = parseInt(coords[0]);
         let k = parseInt(coords[1]);
-        //let game = document.getElementById(`game${r}`);
-        let bord = boards[this.id.slice(-1)];
-
-        if (this.innerHTML === "" && spelActief) {
-
-            //this.innerHTML;
-            if (current_player === x){
-                this.innerHTML = x;
-                this.classList.add('tileAnimation');
-                const positie = r * 3 + k;
-                if(plaatsen(this.id.slice(-1))) {
-                    bord[positie] = current_player;
-                    this.innerHTML = x;
-                    console.log(this.id.slice(-1));
-                }
-
-            }
-            else if (current_player === o){
-                this.innerHTML = o;
-                this.classList.add('tileAnimation');
-                const positie = r * 3 + k;
-                if(plaatsen(this.id.slice(-1))) {
-                    bord[positie] = current_player;
-                    this.innerHTML = o;
-                    console.log(this.id.slice(-1));
-                }
-
-            }
-            spelWinnen(this.id);
-            current_player === x? current_player = o : current_player = x;
-
-            
-        }
-
+        const bord = this.id.slice(-1);
+        const positie = r * 3 + k;
+        setInBoard(bord, positie, current_player);
     }
 
-    const plaatsen = function (index) {
-        if (spelBoard[index] === "X" || spelBoard[index] === "O"){
-            console.log('kan niet')
-            return false;
+
+    const setInBoard = (boardId, pos, player) => {
+        if (spelActief && player !== x && player !== o) return;
+
+        if (boards[boardId][pos] !== '') return;
+
+        const tile = document.querySelector(`#game${boardId} > div:nth-child(${pos + 1})`);
+        tile.classList.add('tileAnimation');
+        boards[boardId][pos] = player;
+        tile.innerHTML = player;
+
+        const uitkomst = checkWin(boards[boardId]);
+        if (uitkomst !== uitkomsten.NONE) {
+            //disable board
+            disableBoard(boardId);
+
+            //animation
+            if (uitkomst === uitkomsten.X) {
+                tile.parentElement.classList.add('xWint');
+            }
+            else if (uitkomst === uitkomsten.O) {
+                tile.parentElement.classList.add('oWint');
+            }
+            
+            console.log(uitkomst + ' wint dit bord');
+            bigBoardConvertedToSingle[boardId] = uitkomst;
+            const resultaatTotal = checkWin(bigBoardConvertedToSingle);
+            if (resultaatTotal !== uitkomsten.NONE)
+                gameOver(resultaatTotal);
         }
-        console.log('ok')
-        return true;
+        current_player === x ? current_player = o : current_player = x;
+
+        if (current_player === ai.char) {
+            const AIResponse = ai.getBestMove(Object.assign([],boards), Object.assign([], bigBoardConvertedToSingle));
+            setInBoard(AIResponse.resultBig, AIResponse.resultSmall, ai.char);
+        }
+        else {
+            //wait for user
+        }
+
     }
     const winCondities = [
         [0, 1, 2],
@@ -120,7 +123,46 @@ import AI from './AI.js';
         [0, 4, 8],
         [2, 4, 6]
     ]
+    const checkWin = board => {
+        for(let i = 0; i < 8; i++){
+            const winConditie = winCondities[i];
+            const a = board[winConditie[0]];
+            const b = board[winConditie[1]];
+            const c = board[winConditie[2]];
+            //console.log(a + '-' + b + '-' + c);
+            if(a === b && b === c) {
+                if (a !== uitkomsten.TIE && a !== uitkomsten.NONE) {
+                    return a === uitkomsten.X ? uitkomsten.X : uitkomsten.O;
+                }
+            }
+        }
+        return board.includes('') ? uitkomsten.NONE : uitkomsten.TIE;
+    }
 
+    const gameOver = uitkomst => {
+        spelActief = false;
+        if (uitkomst === uitkomsten.TIE) {
+            console.log('The game ended in a tie');
+        }
+        else {
+            console.log(current_player + " wint")
+            if(uitkomst === x){
+                let bowser = document.getElementById('scoreBowser');
+                counterX = bowser.innerHTML;
+                counterX++;
+                bowser.innerHTML = counterX
+                //const myTimeout = setTimeout(reset, 3000);
+            }
+            else if(current_player === o){
+                let mario = document.getElementById('scoreMario');
+                counterO = mario.innerHTML;
+                counterO++;
+                mario.innerHTML = counterO;
+                //const myTimeout = setTimeout(reset, 3000);
+            }
+        }
+    }
+    /*
     const spelWinnen = function (ID) {
         let winSpel = false;
         for(let i = 0; i < spelBoard.length; i++){
@@ -166,6 +208,7 @@ import AI from './AI.js';
         }
 
     }
+    */
 
     const winnen = function (index, idChild) {
         let winRonde = false;
@@ -270,6 +313,7 @@ import AI from './AI.js';
     });
 
     const disableBoard = function(boardNum) {
+
         const boardToDisable = document.querySelector(`#game${boardNum}`);
         const children = boardToDisable.children;
         for (let i = 0; i < children.length; i++) {

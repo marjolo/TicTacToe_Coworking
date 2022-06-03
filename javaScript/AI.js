@@ -11,30 +11,13 @@ export default class AI {
         TIE: 0,
         NONE: 10
     }
-    getBestMove(bigBoard) {
-        const bigBoardConverted = [];
-        bigBoard.forEach(board => {
-            const res = this.checkWin(board);
-            if (res === this.score.X) {
-                bigBoardConverted.push('X');
-            }
-            else if (res === this.score.O) {
-                bigBoardConverted.push('O');
-            }
-            else {
-                bigBoardConverted.push(res === this.score.TIE ? 'T' : '');
-            }
-            
-        });
-        console.log(bigBoardConverted);
+    getBestMove(bigBoard, bigBoardConverted) {
         let resultBig = this.#getBestMoveSingle(bigBoardConverted);
-        console.log(resultBig);
-        console.log(bigBoard[resultBig]);
         let resultSmall = this.#getBestMoveSingle(bigBoard[resultBig]);
         return {resultBig, resultSmall};
     }
     #getBestMoveSingle(board) {
-        let bestScore = this.maximizing ? -Infinity : Infinity;
+        let bestScore = this.maximizing ? {score: -Infinity, depth: Infinity} : {score: Infinity, depth: Infinity};
         let bestMove;
         for (let i = 0; i < board.length; i++) {
             if (board[i] === '') {
@@ -43,56 +26,68 @@ export default class AI {
                 if (this.maximizing){
                     //starten in de hoek is het beste voor X --> als O niet in het midden gaat is dit een winnende positie
                     if (i === 0 || i === 2 || i === 6 || i === 8) {
-                        score += .5;
+                        score.score += .5;
                     }
-                    if (score > bestScore) {
-                        bestScore = score;
-                        bestMove = i;
+                    if (score.score >= bestScore.score) {
+                        if (score.depth < bestScore.depth) {
+                            bestScore = score;
+                            bestMove = i;
+                        }
                     }
                 }
                 else {
                     //als O in het midden kan zetten is dit minstens een draw
                     if (i === 4) {
-                        score -= .5;
+                        score.score -= .5;
                     }
-                    if (score < bestScore) {
-                        bestScore = score;
-                        bestMove = i;
+                    if (score.score <= bestScore.score) {
+                        if (score.depth < bestScore.depth) {
+                            bestScore = score;
+                            bestMove = i;
+                        }
                     }
                 }
                 board[i] = '';
             }
         }
-
-
-
         return bestMove;
     }
     minimax(board, isMaximizing, current_depth = 0) {
         let bestScore;
         let win = this.checkWin(board);
         if (win !== this.score.NONE) {
-            return win;
+            const returnType = {score: win, depth: current_depth};
+            return returnType;
         }
         if(isMaximizing) {
-            bestScore = -Infinity;
+            bestScore = {score: -Infinity, depth: Infinity};
             for (let i = 0; i < board.length; i++) {
                 if (board[i] === '') {
                     board[i] = 'X';
-                    let score = this.minimax(board, !isMaximizing, current_depth + 1);
-                    bestScore = Math.max(score, bestScore);
+                    let minmax = this.minimax(board, !isMaximizing, current_depth + 1);
+                    if (minmax.score > bestScore.score) {
+                        bestScore = minmax;
+                    }
+                    else if (minmax.score === bestScore.score) {
+                        bestScore = minmax.depth < bestScore.depth ? minmax : bestScore;
+                    }
                     
                     board[i] = '';
                 }
             }
         }
         else {
-            bestScore = Infinity;
+            bestScore = {score: Infinity, depth: Infinity};
             for (let i = 0; i < board.length; i++) {
                 if (board[i] === '') {
                     board[i] = 'O';
-                    let score = this.minimax(board, !isMaximizing, current_depth + 1);
-                    bestScore = Math.min(score, bestScore);
+                    let minmax = this.minimax(board, !isMaximizing, current_depth + 1);
+                    if (minmax.score < bestScore.score) {
+                        bestScore = minmax;
+                    }
+                    else if (minmax.score === bestScore.score) {
+                        bestScore = minmax.depth < bestScore.depth ? minmax : bestScore;
+                    }
                     board[i] = '';
                 }
             }
@@ -119,7 +114,9 @@ export default class AI {
             if(a === "" || b === "" || c === "") {
             }
             else if(a === b && b === c) {
-                return a === 'X' ? this.score.X : this.score.O;
+                if (a !== 'T' && a !== '') {
+                    return a === 'X' ? this.score.X : this.score.O;
+                }
             }
         }
         return board.includes('') ? this.score.NONE : this.score.TIE;

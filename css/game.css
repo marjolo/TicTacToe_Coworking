@@ -20,7 +20,6 @@ img {
     margin: auto;
     min-width: 10rem;
 }
-
 #board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
