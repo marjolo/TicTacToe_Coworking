@@ -7,4 +7,5 @@
 
     btnSingleplayer.addEventListener('click', () => location.href = './gameSinglePlayer/');
     btnMultiplayer.addEventListener('click', () => location.href='./gameMultiplayer/');
+    btnSpelregels.addEventListener('click', () => location.href='./spelregels/');
 })();
