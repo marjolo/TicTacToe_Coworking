@@ -1,13 +1,11 @@
 html {
     font-size: 62.5%;
-
     background-color: #40FF53;
 }
 
 h1{
     font-size: 4rem;
-    margin: auto 0;
-    background: url("../svg/Titel\ game\ mobile.svg") no-repeat center;
+    background: url("../svg/Titel game mobile.svg") no-repeat center;
     text-indent: -99999px;   
 }
 .header {
@@ -22,20 +20,17 @@ img {
     margin: auto;
 }
 
-main {
-    margin-top: 5rem;
-}
 #board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 90vw;
     height: 100%;
-    margin: 2rem auto;
+    margin: 1rem auto;
     gap: 2rem;
     padding-bottom: 6rem;
-
     overflow: auto;
 }
+
 .games {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -43,6 +38,7 @@ main {
     height: 100%;
     margin: auto;
 }
+
 .tile {
     width: 100%;
     height: 100%;
@@ -89,6 +85,7 @@ main {
     grid-template-columns: repeat(3, 1fr);
     text-align: center;
 }
+
 #score > p {
     margin: .5rem .5rem;
 }
@@ -128,10 +125,34 @@ main {
 }
 
 
-@media (min-width: 75em) {
+@media (min-width: 46.875em) {
+    h1{
+        font-size: 4rem;
+        margin: auto 0;
+        background: url("../svg/Titel game desktop.svg") no-repeat center;
+        text-indent: -99999px;
+    }
+
     #board {
         width: 75vh;
         height: 75vh;
     }
-    
+
+    #score {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 90em){
+    #buttons{
+        display: block;
+        margin-top: -53em;
+        margin-left: 13em;
+    }
+
+    #buttons div{
+        display: flex;
+        flex-direction: column;
+        margin: 3em;
+    }
 }

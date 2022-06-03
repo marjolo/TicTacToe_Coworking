@@ -1,8 +1,36 @@
 html{
     background-color: #40FF53;
-
 }
 
+figure img:first-child{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 5em;
+    max-width: 70%;
+}
+
+figure img:nth-child(2){
+    display: none;
+}
+
+figure img:nth-child(3){
+    margin-top: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+figure img:nth-child(4){
+    display: block;
+    margin: -19em auto 4em auto;
+}
+
+figure img:nth-child(5){
+    display: none;
+}
+
+/*
 figure img:nth-child(1){
     display: block;
     margin-left: auto;
@@ -12,6 +40,10 @@ figure img:nth-child(1){
 }
 
 figure img:nth-child(2){
+    display: none
+}
+
+figure img:nth-child(3){
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -19,7 +51,7 @@ figure img:nth-child(2){
     z-index: -1;
 }
 
-figure img:nth-child(3){
+.foto img:first-child{
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -27,6 +59,10 @@ figure img:nth-child(3){
     margin-top: -19em;
 }
 
+.foto img:nth-child(2){
+    display: none;
+}
+*/
 a img{
     background: rgba(255, 255, 255, 0.72);
     background-blend-mode: lighten;
@@ -55,17 +91,17 @@ a img{
     height: auto;
 }
 #singleplayer {
-    background: url('../svg/Singleplayer.svg') no-repeat center;
+    background: url('../svg/singleplayerThin.svg') no-repeat center;
     background-size: 100%;
     text-indent: -9999px;
 }
 #multiplayer {
-    background: url('../svg/Multiplayer.svg') no-repeat center;
+    background: url('../svg/multiplayerThin.svg') no-repeat center;
     background-size: 100%;
     text-indent: -9999px;
 }
 #spelregels{
-    background: url('../svg/Spelregels.svg') no-repeat center;
+    background: url('../svg/spelregelsThin.svg') no-repeat center;
     background-size: 100%;
     text-indent: -9999px;
 }
@@ -77,6 +113,56 @@ a img{
 @media (min-width: 46.875em) {
     figure img:nth-child(1){
         display: none;
+    }
+
+    figure img:nth-child(2){
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5em;
+        max-width: 70%;
+    }
+
+    figure img:nth-child(3){
+        display: none;
+    }
+
+    figure img:nth-child(4){
+        margin: auto 0 auto 0;
+        width: 20%;
+    }
+
+    figure img:nth-child(5){
+        margin: auto 0 auto auto;
+        width: 20%;
+        display: block;
+    }
+
+    /*
+    .foto img:first-child{
+        display: block;
+        margin-left: 1em;
+        margin-top: 7em;
+        min-width: 20%;
+    }
+
+    .foto img:nth-child(2){
+        display: block;
+        margin-left: 40em;
+    }
+
+    .foto{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        z-index: 1;
+    }
+    */
+    #buttons{
+        text-align: center;
+        width: fit-content;
+        margin: 0 auto;
+        display: block;
     }
 }
 
