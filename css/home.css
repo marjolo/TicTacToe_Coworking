@@ -21,12 +21,12 @@ figure img:nth-child(3){
     display: block;
 }
 
-.figures:nth-child(1){
+.figures img:nth-child(1){
     display: block;
     margin: -19em auto 4em auto;
 }
 
-.figures:nth-child(2){
+.figures img:nth-child(2){
     display: none;
 }
 
