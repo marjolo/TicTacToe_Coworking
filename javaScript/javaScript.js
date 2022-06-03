@@ -4,6 +4,7 @@ import AI from './AI.js';
 
 (function() {
     let resetKnop = document.querySelector("#resetButton");
+    let menuKnop = document.getElementById('menuButton');
     let board;
     let x = "X",counterX;
     let o = "O",counterO;
@@ -18,6 +19,10 @@ import AI from './AI.js';
     document.addEventListener('DOMContentLoaded', () => {
         console.log("Window loaded");
         setBoards();
+    })
+
+    menuKnop.addEventListener("click", () => {
+        window.location.href = "../index.html";
     })
 
     function setBoards() {
