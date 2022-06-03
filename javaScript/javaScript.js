@@ -305,10 +305,17 @@
     }
 
 //kruisje klikken
-    span.addEventListener('click',function() {
+        const close1 = document.querySelector('.close1');
+        const close2 = document.querySelector('.close2')
+    close1.addEventListener('click',function() {
         bowserWins.style.display = "none";
+        reset();
+        puntenReset();
+    })
+    close2.addEventListener('click',function() {
         marioWins.style.display = "none";
         reset();
         puntenReset();
     })
+
 })();
