@@ -11,6 +11,7 @@
     let spelActief = true;
     let boards = [];
     let spelBoard = ['','','','','','','','',''];
+    let max = 5;
 
     document.addEventListener('DOMContentLoaded', () => {
         console.log("Window loaded");
@@ -147,20 +148,22 @@
                 counterX = bowser.innerHTML;
                 counterX++;
                 bowser.innerHTML = counterX
-                const myTimeout = setTimeout(reset, 3000);
+                const myTimeout = setTimeout(reset, 2000);
+                totalWin();
             }
             else if(current_player === o){
                 let mario = document.getElementById('scoreMario');
                 counterO = mario.innerHTML;
                 counterO++;
                 mario.innerHTML = counterO;
-                const myTimeout = setTimeout(reset, 3000);
+                const myTimeout = setTimeout(reset, 2000);
+                totalWin();
             }
         }
         else if(!spelBoard.includes("")){
             spelActief = false;
             console.log("tie")
-            const myTimeout = setTimeout(reset, 3000);
+            const myTimeout = setTimeout(reset, 2000);
         }
 
     }
@@ -279,4 +282,33 @@
         document.getElementById('scoreBowser').innerHTML = 0;
         document.getElementById('scoreMario').innerHTML = 0;
     }
+    const totalWin = function(){
+        let bowser = document.getElementById('scoreBowser').innerHTML;
+        let mario = document.getElementById('scoreMario').innerHTML;
+        if(parseInt(bowser) === max){
+            popup(bowserWins);
+        }
+        else if(parseInt(mario) === max){
+            popup(marioWins);
+        }
+    }
+
+    let marioWins = document.getElementById("marioWins");
+    let bowserWins = document.getElementById("bowserWins");
+
+// Get the <span> element that closes the modal
+    let span = document.getElementsByClassName("close")[0];
+
+
+    const popup = function(winner) {
+        winner.style.display = "block";
+    }
+
+//kruisje klikken
+    span.addEventListener('click',function() {
+        bowserWins.style.display = "none";
+        marioWins.style.display = "none";
+        reset();
+        puntenReset();
+    })
 })();
