@@ -21,12 +21,12 @@ figure img:nth-child(3){
     display: block;
 }
 
-figure img:nth-child(4){
+.figures:nth-child(1){
     display: block;
     margin: -19em auto 4em auto;
 }
 
-figure img:nth-child(5){
+.figures:nth-child(2){
     display: none;
 }
 
@@ -127,12 +127,12 @@ a img{
         display: none;
     }
 
-    figure img:nth-child(4){
+    .figures:nth-child(1){
         margin: auto 0 auto 0;
         width: 20%;
     }
 
-    figure img:nth-child(5){
+    .figures:nth-child(2){
         margin: auto 0 auto auto;
         width: 20%;
         display: block;
