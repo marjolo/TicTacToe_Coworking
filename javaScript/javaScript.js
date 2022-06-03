@@ -83,7 +83,7 @@ import AI from './AI.js';
                     this.innerHTML = x;
                     console.log(this.id.slice(-1));
                 }
-                console.log(ai.getBestMove(Object.assign([], bord)));
+                console.log(ai.getBestMove(Object.assign([], boards)));
 
             }
             else if (current_player === o){
@@ -207,17 +207,21 @@ import AI from './AI.js';
                 }
             }
             disableBoard(index);
+            /*
             let bord = boards[index];
             bord.forEach((element,index) =>{
                 bord[index] = '';
             })
+            */
         }
         else if(!boards[index].includes("")){
             console.log("tie");
+            /*
             let bord = boards[index];
             bord.forEach((element,index) =>{
                 bord[index] = '';
             })
+            */
             spelBoard[index] = "T";
         }
 

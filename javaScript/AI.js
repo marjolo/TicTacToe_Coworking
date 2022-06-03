@@ -2,12 +2,8 @@
 
 export default class AI {
     constructor(char) {
-        this.nodesMap = new Map();
         this.char = char;
         this.maximizing = char === 'X' ? true : false;
-    }
-    randomFunc() {
-        return 1;
     }
     score = {
         X: 1,
@@ -15,8 +11,29 @@ export default class AI {
         TIE: 0,
         NONE: 10
     }
-
-    getBestMove(board) {
+    getBestMove(bigBoard) {
+        const bigBoardConverted = [];
+        bigBoard.forEach(board => {
+            const res = this.checkWin(board);
+            if (res === this.score.X) {
+                bigBoardConverted.push('X');
+            }
+            else if (res === this.score.O) {
+                bigBoardConverted.push('O');
+            }
+            else {
+                bigBoardConverted.push(res === this.score.TIE ? 'T' : '');
+            }
+            
+        });
+        console.log(bigBoardConverted);
+        let resultBig = this.#getBestMoveSingle(bigBoardConverted);
+        console.log(resultBig);
+        console.log(bigBoard[resultBig]);
+        let resultSmall = this.#getBestMoveSingle(bigBoard[resultBig]);
+        return {resultBig, resultSmall};
+    }
+    #getBestMoveSingle(board) {
         let bestScore = this.maximizing ? -Infinity : Infinity;
         let bestMove;
         for (let i = 0; i < board.length; i++) {
@@ -24,12 +41,20 @@ export default class AI {
                 board[i] = this.char;
                 let score = this.minimax(board, !this.maximizing);
                 if (this.maximizing){
+                    //starten in de hoek is het beste voor X --> als O niet in het midden gaat is dit een winnende positie
+                    if (i === 0 || i === 2 || i === 6 || i === 8) {
+                        score += .5;
+                    }
                     if (score > bestScore) {
                         bestScore = score;
                         bestMove = i;
                     }
                 }
                 else {
+                    //als O in het midden kan zetten is dit minstens een draw
+                    if (i === 4) {
+                        score -= .5;
+                    }
                     if (score < bestScore) {
                         bestScore = score;
                         bestMove = i;
