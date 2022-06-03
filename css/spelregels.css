@@ -1,0 +1,129 @@
+html{
+    background-color: #40FF53;
+    /*#40FF53*/
+}
+
+body{
+    background: linear-gradient(#37E0E0, #40FF53);;
+}
+
+@font-face {
+    font-family: Quick;
+    src: url('../font/Quicksand-VariableFont_wght.ttf');
+}
+
+h1{
+    font-size: 4rem;
+    margin: 5rem;
+    text-align: center;
+}
+h2{
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.textDIV{
+    max-width: 40rem;
+    margin: -25rem auto 3rem;
+    padding: 2rem;
+    text-align: left;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+p{
+    font-family: Quick, serif;
+
+    font-size: 1.5rem;
+    -webkit-text-stroke: 0.5px black;
+    font-weight: 300;
+
+    /*line-height: 1.5rem;*/
+    /*letter-spacing: 2px;*/
+}
+
+#menuButton {
+    width: 8rem;
+    height: auto;
+
+    border: none;
+    padding: 0.5rem 1.5rem;
+
+    background: url('../svg/Menu.svg') no-repeat center;
+    background-size: 100%;
+    text-indent: -9999px;
+}
+
+.buttonDIV{
+    text-align: center;
+
+    background-color: rgba(255,255,255,0.6);
+    padding: 1rem;
+    border-radius: 8px;
+
+    width: 8rem;
+    margin: auto auto 3rem;
+}
+
+.figures{
+    display: flex;
+    justify-content: space-between;
+    margin-top: -4rem;
+    gap: 45rem;
+
+    overflow: hidden;
+}
+
+.figures img:nth-child(1){
+    margin: auto 0 auto 0;
+    min-width: 20%;
+}
+
+.figures img:nth-child(2){
+    display: block;
+    margin-top: -1rem;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+}
+::-webkit-scrollbar-thumb:hover{
+    background: rgba(0,0,0,0.4);
+}
+::-webkit-scrollbar-thumb:active{
+    background: rgba(0,0,0,.9);
+}
+
+@media only screen and (max-width: 500px) {
+    h1{
+        font-size: 2.5rem;
+        margin: 2rem 2rem 0;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+    p{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    .figures{
+        display: none;
+    }
+    .textDIV{
+        margin: auto auto 3rem;
+    }
+}
