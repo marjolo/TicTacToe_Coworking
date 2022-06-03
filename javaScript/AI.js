@@ -13,14 +13,16 @@ export default class AI {
     }
     getBestMove(bigBoard, bigBoardConverted) {
         let resultBig = this.#getBestMoveSingle(bigBoardConverted);
-        let resultSmall = this.#getBestMoveSingle(bigBoard[resultBig]);
+        let resultSmall = this.#getBestMoveSingle(bigBoard[resultBig], bigBoardConverted);
         return {resultBig, resultSmall};
     }
     #getBestMoveSingle(board) {
         let bestScore = this.maximizing ? {score: -Infinity, depth: Infinity} : {score: Infinity, depth: Infinity};
         let bestMove;
+        let count = 0;
         for (let i = 0; i < board.length; i++) {
             if (board[i] === '') {
+                count++;
                 board[i] = this.char;
                 let score = this.minimax(board, !this.maximizing);
                 if (this.maximizing){
@@ -28,7 +30,11 @@ export default class AI {
                     if (i === 0 || i === 2 || i === 6 || i === 8) {
                         score.score += .5;
                     }
-                    if (score.score >= bestScore.score) {
+                    if (score.score > bestScore.score) {
+                        bestScore = score;
+                        bestMove = i;
+                    }
+                    else if (score.score === bestScore.score) {
                         if (score.depth < bestScore.depth) {
                             bestScore = score;
                             bestMove = i;
@@ -40,7 +46,11 @@ export default class AI {
                     if (i === 4) {
                         score.score -= .5;
                     }
-                    if (score.score <= bestScore.score) {
+                    if (score.score < bestScore.score) {
+                        bestScore = score;
+                        bestMove = i;
+                    }
+                    else if (score.score === bestScore.score) {
                         if (score.depth < bestScore.depth) {
                             bestScore = score;
                             bestMove = i;
@@ -50,7 +60,6 @@ export default class AI {
                 board[i] = '';
             }
         }
-        return bestMove;
     }
     minimax(board, isMaximizing, current_depth = 0) {
         let bestScore;

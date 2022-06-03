@@ -129,7 +129,6 @@ import AI from './AI.js';
             const a = board[winConditie[0]];
             const b = board[winConditie[1]];
             const c = board[winConditie[2]];
-            //console.log(a + '-' + b + '-' + c);
             if(a === b && b === c) {
                 if (a !== uitkomsten.TIE && a !== uitkomsten.NONE) {
                     return a === uitkomsten.X ? uitkomsten.X : uitkomsten.O;
