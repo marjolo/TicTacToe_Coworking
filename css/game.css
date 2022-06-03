@@ -18,6 +18,7 @@ h1{
 }
 img {
     margin: auto;
+    min-width: 10rem;
 }
 
 #board {
