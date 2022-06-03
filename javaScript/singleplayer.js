@@ -1,3 +1,5 @@
+import AI from './AI.js';
+
 'use strict';
 
 (function() {

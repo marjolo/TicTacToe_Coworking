@@ -1,0 +1,24 @@
+body{
+}
+
+h1{
+    font-size: 3rem;
+    margin: 5rem;
+    text-align: center;
+}
+div{
+    max-width: 40rem;
+    margin: auto;
+    text-align: left;
+
+    border: 5px solid #FFFF00;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+p{
+    font-size: 1rem;
+    -webkit-text-stroke: 0.5px black;
+    font-weight: lighter;
+}

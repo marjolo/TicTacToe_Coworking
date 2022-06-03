@@ -5,6 +5,6 @@
     const btnMultiplayer = document.querySelector('#multiplayer');
     const btnSpelregels = document.querySelector('#spelregels');
 
-    btnSingleplayer.addEventListener('click', () => location.href = './game/');
-    btnMultiplayer.addEventListener('click', () => location.href='./game/');
+    btnSingleplayer.addEventListener('click', () => location.href = './gameSinglePlayer/');
+    btnMultiplayer.addEventListener('click', () => location.href='./gameMultiplayer/');
 })();
