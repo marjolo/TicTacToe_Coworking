@@ -3,22 +3,32 @@ html {
     background-color: #40FF53;
 }
 
-h1{
-    font-size: 4rem;
-    background: url("../svg/Titel game mobile.svg") no-repeat center;
-    text-indent: -99999px;   
+img{
+    display: block;
+    width: 20rem;
 }
+
+img:nth-child(2){
+    display: none;
+}
+
+main{
+    margin-top: 2rem;
+}
+
 .header {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
+    margin-top: 2rem;
 }
+
 .icons {
     width: 5em;
 }
+
 img {
     margin: auto;
-    min-width: 10rem;
 }
 
 #board {
@@ -26,7 +36,7 @@ img {
     grid-template-columns: repeat(3, 1fr);
     width: 90vw;
     height: 100%;
-    margin: 1rem auto;
+    margin: 2rem auto;
     gap: 2rem;
     padding-bottom: 6rem;
     overflow: auto;
@@ -103,11 +113,11 @@ img {
     display: flex;
     gap: 2rem;
 
-    margin: 2rem auto;
+    margin: -3rem auto 0 auto;
 }
 #buttons div {
     background-color:  rgba(255,255,255,0.6);
-    padding: 1rem;
+    padding: 1.2rem;
     border-radius: 8px;
 }
 #buttons button {
@@ -146,11 +156,12 @@ img {
 
 
 @media (min-width: 46.875em) {
-    h1{
-        font-size: 4rem;
-        margin: auto 0;
-        background: url("../svg/Titel game desktop.svg") no-repeat center;
-        text-indent: -99999px;
+    img:nth-child(1){
+        display: none;
+    }
+
+    img:nth-child(2){
+        display: block;
     }
 
     #board {
