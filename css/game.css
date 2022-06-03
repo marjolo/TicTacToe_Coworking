@@ -3,22 +3,32 @@ html {
     background-color: #40FF53;
 }
 
-h1{
-    font-size: 4rem;
-    background: url("../svg/Titel game mobile.svg") no-repeat center;
-    text-indent: -99999px;   
+img{
+    display: block;
+    width: 20rem;
 }
+
+img:nth-child(2){
+    display: none;
+}
+
+main{
+    margin-top: 2rem;
+}
+
 .header {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
+    margin-top: 2rem;
 }
+
 .icons {
     width: 5em;
 }
+
 img {
     margin: auto;
-    min-width: 10rem;
 }
 
 #board {
@@ -26,7 +36,7 @@ img {
     grid-template-columns: repeat(3, 1fr);
     width: 90vw;
     height: 100%;
-    margin: 1rem auto;
+    margin: 2rem auto;
     gap: 2rem;
     padding-bottom: 6rem;
     overflow: auto;
@@ -103,11 +113,11 @@ img {
     display: flex;
     gap: 2rem;
 
-    margin: 2rem auto;
+    margin: -3rem auto 0 auto;
 }
 #buttons div {
     background-color:  rgba(255,255,255,0.6);
-    padding: 1rem;
+    padding: 1.2rem;
     border-radius: 8px;
 }
 #buttons button {
@@ -144,13 +154,73 @@ img {
      background: rgba(0,0,0,.9);
 }
 
+#marioWins {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 200px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+#bowserWins{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 200px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: chartreuse;
+    margin: auto;
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 5rem;
+    width: 80%;
+}
+.modal-content p {
+    font-size: 2rem;
+    padding-top: 5rem;
+}
+.modal-content p::after {
+    content: '🏆';
+}
+/* The Close Button */
+.close1, .close2{
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close1:hover,
+.close1:focus, .close2:hover, .close2:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 
 @media (min-width: 46.875em) {
-    h1{
-        font-size: 4rem;
-        margin: auto 0;
-        background: url("../svg/Titel game desktop.svg") no-repeat center;
-        text-indent: -99999px;
+    img:nth-child(1){
+        display: none;
+    }
+
+    img:nth-child(2){
+        display: block;
     }
 
     #board {
