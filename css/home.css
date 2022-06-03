@@ -108,12 +108,13 @@ a img{
 
     .figures img:nth-child(2){
         display: block;
+        margin-top: -1rem;
     }
 
     #buttons{
         text-align: center;
         width: fit-content;
-        margin: -22rem auto 0 auto;
+        margin: -20rem auto 0 auto;
         display: block;
     }
 }
