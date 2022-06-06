@@ -64,7 +64,7 @@
     function setTile() {
         console.log("tile clicked");
         console.log("ID: " + this.id);
-        
+
         let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
         let r = parseInt(coords[0]);
         let k = parseInt(coords[1]);
@@ -103,7 +103,7 @@
         }
 
     }
-const showPlayer = function(player){
+    const showPlayer = function(player){
         if(player === x){
             bowserImg.style.backgroundColor = "red";
             marioImg.style.removeProperty("background-color");

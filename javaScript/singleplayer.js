@@ -11,6 +11,9 @@ import AI from './AI.js';
     }
     let resetKnop = document.querySelector("#resetButton");
     let menuKnop = document.getElementById('menuButton');
+    let bowserImg = document.getElementById('imgBowser');
+    let marioImg = document.getElementById('imgMario');
+
     let board;
     let x = uitkomsten.X,counterX;
     let o = uitkomsten.O,counterO;
@@ -34,6 +37,7 @@ import AI from './AI.js';
         for (let i = 0; i < 9; i++) {
             setBoard(document.querySelector(`#game${i}`));
         }
+        showPlayer(current_player);
     }
     function setBoard(div) {
 
@@ -103,7 +107,7 @@ import AI from './AI.js';
                 gameOver(resultaatTotal);
         }
         current_player === x ? current_player = o : current_player = x;
-
+        showPlayer(current_player);
         if (current_player === ai.char) {
             const AIResponse = ai.getBestMove(Object.assign([],boards), Object.assign([], bigBoardConvertedToSingle));
             setInBoard(AIResponse.resultBig, AIResponse.resultSmall, ai.char);
@@ -112,6 +116,16 @@ import AI from './AI.js';
             //wait for user
         }
 
+    }
+    const showPlayer = function(player){
+        if(player === x){
+            bowserImg.style.backgroundColor = "red";
+            marioImg.style.removeProperty("background-color");
+        }
+        else{
+            marioImg.style.backgroundColor = "yellow";
+            bowserImg.style.removeProperty("background-color");
+        }
     }
     const winCondities = [
         [0, 1, 2],
