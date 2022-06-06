@@ -3,6 +3,8 @@
 (function() {
     let resetKnop = document.querySelector("#resetButton");
     let menuKnop = document.getElementById('menuButton');
+    let bowserImg = document.getElementById('imgBowser');
+    let marioImg = document.getElementById('imgMario');
     let board;
     let x = "X",counterX;
     let o = "O",counterO;
@@ -27,6 +29,7 @@
             setBoard(document.querySelector(`#game${i}`));
         }
         console.log(boards)
+        showPlayer(current_player);
     }
 
     function setBoard(div) {
@@ -61,7 +64,7 @@
     function setTile() {
         console.log("tile clicked");
         console.log("ID: " + this.id);
-
+        
         let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
         let r = parseInt(coords[0]);
         let k = parseInt(coords[1]);
@@ -95,10 +98,20 @@
             }
             spelWinnen(this.id);
             current_player === x? current_player = o : current_player = x;
-
+            showPlayer(current_player);
             
         }
 
+    }
+const showPlayer = function(player){
+        if(player === x){
+            bowserImg.style.backgroundColor = "red";
+            marioImg.style.removeProperty("background-color");
+        }
+        else{
+            marioImg.style.backgroundColor = "yellow";
+            bowserImg.style.removeProperty("background-color");
+        }
     }
 
     const plaatsen = function (index) {
