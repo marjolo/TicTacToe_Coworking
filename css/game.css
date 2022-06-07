@@ -23,6 +23,12 @@ main{
     margin-top: 2rem;
 }
 
+.titel{
+    background: url("../svg/titelMobileThin.svg") no-repeat center;
+    text-indent: -9999px;
+    height: 8rem;
+}
+
 .icons {
     width: 5em;
 }
@@ -233,6 +239,13 @@ img {
 }
 
 @media (min-width: 90em){
+    .titel{
+        background: url("../svg/titelDesktopThin.svg") no-repeat center;
+        text-indent: -9999px;
+        height: 8rem;
+    }
+
+
     #buttons{
         display: block;
         margin-top: -53em;
