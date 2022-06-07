@@ -220,14 +220,6 @@ img {
 
 
 @media (min-width: 46.875em) {
-    img:nth-child(1){
-        display: none;
-    }
-
-    img:nth-child(2){
-        display: block;
-    }
-
     #board {
         width: 75vh;
         height: 75vh;
@@ -244,6 +236,8 @@ img {
         text-indent: -9999px;
         height: 8rem;
     }
+
+
 
 
     #buttons{
