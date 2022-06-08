@@ -46,7 +46,6 @@ import AI from './AI.js';
 
         for (let r = 0; r < 3; r++){
             for (let k = 0; k < 3; k++){
-                //<div id="0-0" class="tile"></div>
                 let tile = document.createElement("div");
                 tile.id = r.toString() + "-" + k.toString() + "/" + div.id;
                 tile.classList.add("tile");
@@ -109,6 +108,7 @@ import AI from './AI.js';
         current_player === x ? current_player = o : current_player = x;
         showPlayer(current_player);
         if (current_player === ai.char) {
+            
             const AIResponse = ai.getBestMove(Object.assign([],boards), Object.assign([], bigBoardConvertedToSingle));
             setInBoard(AIResponse.resultBig, AIResponse.resultSmall, ai.char);
         }
@@ -163,18 +163,16 @@ import AI from './AI.js';
                 counterX = bowser.innerHTML;
                 counterX++;
                 bowser.innerHTML = counterX
-                //const myTimeout = setTimeout(reset, 3000);
+                const myTimeout = setTimeout(reset, 3000);
             }
             else if(current_player === o){
                 let mario = document.getElementById('scoreMario');
                 counterO = mario.innerHTML;
                 counterO++;
                 mario.innerHTML = counterO;
-                //const myTimeout = setTimeout(reset, 3000);
+                const myTimeout = setTimeout(reset, 3000);
             }
         }
-        reset();
-
     }
 
 
@@ -187,7 +185,6 @@ import AI from './AI.js';
             bord.forEach((element,index) =>{
                 bord[index] = '';
             })
-            console.log(boards[index])
         })
         let smallBoard = document.querySelectorAll('.games');
         for (let i = 0; i < smallBoard.length; i++) {
