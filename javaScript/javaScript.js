@@ -13,7 +13,7 @@
     let spelActief = true;
     let boards = [];
     let spelBoard = ['','','','','','','','',''];
-    let max = 1;
+    let max = 5;
 
     document.addEventListener('DOMContentLoaded', () => {
         console.log("Window loaded");
