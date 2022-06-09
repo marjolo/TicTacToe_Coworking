@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" class="css">
     <link rel="stylesheet" href="../css/common.css" class="css">
     <link rel="stylesheet" href="../css/game.css" class="css">
+    <script type="module" src="../javaScript/singleplayer.js"></script>
     <title>Super TicTacToe</title>
 </head>
 <body>
@@ -40,26 +41,27 @@
                 <button id="menuButton">menu</button>
             </div>
         </section>
-        <div id="bowserWins" class="modal">
+        <div id="bowserWins" class="modal" aria-expanded="false">
 
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close1">&times;</span>
-                <p>You win! </p>
+                <p></p>
+                <img src="../images/bowser.png" alt="bowser wint">
             </div>
 
         </div>
         <!-- The Modal -->
-        <div id="marioWins" class="modal">
+        <div id="marioWins" class="modal" aria-expanded="false">
 
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close2">&times;</span>
-                <p>You lose! </p>
+                <p></p>
+                <img src="../images/marioWins.png" alt="mario wint">
             </div>
 
         </div>
     </main>
 </body>
-<script type="module" src="../javaScript/singleplayer.js"></script>
 </html>

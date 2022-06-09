@@ -161,7 +161,6 @@ img {
 }
 
 #marioWins {
-    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 200px; /* Location of the box */
@@ -174,7 +173,6 @@ img {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 #bowserWins{
-    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 200px; /* Location of the box */
@@ -188,6 +186,12 @@ img {
 }
 
 /* Modal Content */
+.modal[aria-expanded="false"] {
+    display: none;
+}
+.modal[aria-expanded="true"] {
+    display: block;
+}
 .modal-content {
     background-color: chartreuse;
     margin: auto;
