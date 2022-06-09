@@ -120,7 +120,7 @@ a img{
     #buttons{
         text-align: center;
         width: fit-content;
-        margin: -20rem auto 0 auto;
+        margin: -23rem auto 0 auto;
         display: block;
     }
 
@@ -129,7 +129,7 @@ a img{
     }
 
     .buizen figure img{
-        margin-top: 3rem;
+        margin-top: 6rem;
         z-index: -1000;
         display: inline-block;
     }
