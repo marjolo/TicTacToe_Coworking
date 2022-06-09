@@ -1,6 +1,7 @@
 html {
     font-size: 62.5%;
     background-color: #40FF53;
+    overflow-y: hidden;
 }
 
 img{
@@ -231,14 +232,19 @@ img {
 }
 
 @media (min-width: 90em){
+    h1{
+        margin-top: -1rem;
+    }
+
+    .header{
+        margin-top: -3rem;
+    }
+
     .titel{
         background: url("../svg/titelDesktopThin.svg") no-repeat center;
         text-indent: -9999px;
         height: 8rem;
     }
-
-
-
 
     #buttons{
         display: block;
