@@ -30,11 +30,11 @@ export default class AI {
                     if (i === 0 || i === 2 || i === 6 || i === 8) {
                         score.score += .5;
                     }
-                    if (score.score > bestScore.score) {
+                    if (score.score > bestScore.score && bestScore.score !== 1) {
                         bestScore = score;
                         bestMove = i;
                     }
-                    else if (score.score === bestScore.score) {
+                    else if (score.score === bestScore.score || score.score >= 1) {
                         if (score.depth < bestScore.depth) {
                             bestScore = score;
                             bestMove = i;
@@ -46,11 +46,11 @@ export default class AI {
                     if (i === 4) {
                         score.score -= .5;
                     }
-                    if (score.score < bestScore.score) {
+                    if (score.score < bestScore.score && bestScore.score !== -1) {
                         bestScore = score;
                         bestMove = i;
                     }
-                    else if (score.score === bestScore.score) {
+                    else if (score.score === bestScore.score || score.score <= -1) {
                         if (score.depth < bestScore.depth) {
                             bestScore = score;
                             bestMove = i;

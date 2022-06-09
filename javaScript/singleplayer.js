@@ -22,15 +22,30 @@ import AI from './AI.js';
     let spelActief = true;
     let boards = [];
     let bigBoardConvertedToSingle = ['', '', '', '', '', '', '', '', ''];
-    let ai = new AI(o);
+    let ai;
 
     document.addEventListener('DOMContentLoaded', () => {
         setBoards();
+        //make AI random bowser or mario -> notify player which charcter he is
+        decideOnPlayer();
     });
 
     menuKnop.addEventListener("click", () => {
         window.location.href = "../index.html";
     });
+    const decideOnPlayer = () => {
+        let r = Math.floor(Math.random() * 2);
+        if (r === 0) {
+            //player is bowser
+            ai = new AI(o);
+        }
+        else {
+            //player is Mario
+            ai = new AI(x);
+            setTimeout(makeAiMove, 500);
+        }
+
+    }
 
 
     function setBoards() {
@@ -66,13 +81,14 @@ import AI from './AI.js';
 
 
     function setTile() {
-
-        let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
-        let r = parseInt(coords[0]);
-        let k = parseInt(coords[1]);
-        const bord = this.id.slice(-1);
-        const positie = r * 3 + k;
-        setInBoard(bord, positie, current_player);
+        if (current_player !== ai.char) {
+            let coords = this.id.split("-");    //"1-2" -> ["1", "2'"]
+            let r = parseInt(coords[0]);
+            let k = parseInt(coords[1]);
+            const bord = this.id.slice(-1);
+            const positie = r * 3 + k;
+            setInBoard(bord, positie, current_player);
+        }
     }
 
 
@@ -102,20 +118,21 @@ import AI from './AI.js';
             console.log(uitkomst + ' wint dit bord');
             bigBoardConvertedToSingle[boardId] = uitkomst;
             const resultaatTotal = checkWin(bigBoardConvertedToSingle);
-            if (resultaatTotal !== uitkomsten.NONE)
+            if (resultaatTotal !== uitkomsten.NONE) {
                 gameOver(resultaatTotal);
+                return;
+            }
         }
         current_player === x ? current_player = o : current_player = x;
         showPlayer(current_player);
         if (current_player === ai.char) {
-            
-            const AIResponse = ai.getBestMove(Object.assign([],boards), Object.assign([], bigBoardConvertedToSingle));
-            setInBoard(AIResponse.resultBig, AIResponse.resultSmall, ai.char);
-        }
-        else {
-            //wait for user
-        }
+            setTimeout(makeAiMove, 2000);
+        } //else wait for player
 
+    }
+    const makeAiMove = () => {
+        const AIResponse = ai.getBestMove(Object.assign([],boards), Object.assign([], bigBoardConvertedToSingle));
+        setInBoard(AIResponse.resultBig, AIResponse.resultSmall, ai.char);
     }
     const showPlayer = function(player){
         if(player === x){
@@ -163,16 +180,15 @@ import AI from './AI.js';
                 counterX = bowser.innerHTML;
                 counterX++;
                 bowser.innerHTML = counterX
-                const myTimeout = setTimeout(reset, 3000);
             }
             else if(current_player === o){
                 let mario = document.getElementById('scoreMario');
                 counterO = mario.innerHTML;
                 counterO++;
                 mario.innerHTML = counterO;
-                const myTimeout = setTimeout(reset, 3000);
             }
         }
+        setTimeout(reset, 3000);
     }
 
 
@@ -208,6 +224,9 @@ import AI from './AI.js';
         for (let i = 0; i < 9; i++){
             const game = document.getElementById(`game${i}`);
             game.classList.remove('xWint', 'oWint');
+        }
+        if (current_player === ai.char) {
+            makeAiMove();
         }
     }
     resetKnop.addEventListener('click', function(){
