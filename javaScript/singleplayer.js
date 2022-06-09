@@ -205,8 +205,6 @@ import AI from './AI.js';
 
 
     const reset = function() {
-        bowserScore.innerHTML = 0;
-        marioScore.innerHTML = 0;
         bigBoardConvertedToSingle = ['', '', '', '', '', '', '', '', ''];
 
         boards.forEach((element,index) =>{
@@ -255,6 +253,8 @@ import AI from './AI.js';
         }
     }
     const popup = function(winner) {
+        bowserScore.innerHTML = 0;
+        marioScore.innerHTML = 0;
         if (winner === x) {
             document.querySelector('#bowserWins p').innerHTML = ai.char === x ? "You lose!" : "You win!";
             bowserWins.setAttribute('aria-expanded', true);
