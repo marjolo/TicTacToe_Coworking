@@ -262,6 +262,7 @@
             const children = resetListener.children;
             for (let i = 0; i < children.length; i++) {
                 children[i].addEventListener('click', setTile);
+                children[i].classList.remove('tileAnimation');
             }
         }
 
@@ -277,6 +278,7 @@
             const game = document.getElementById(`game${i}`);
             game.classList.remove('xWint', 'oWint');
         }
+
     }
     resetKnop.addEventListener('click', function(){
         reset();
