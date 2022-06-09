@@ -231,6 +231,7 @@ import AI from './AI.js';
         }
         beginSpeler = beginSpeler === x ? o : x;
         current_player = beginSpeler;
+        showPlayer(current_player);
 
         for (let i = 0; i < 9; i++){
             const game = document.getElementById(`game${i}`);
