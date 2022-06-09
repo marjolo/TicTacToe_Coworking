@@ -1,5 +1,6 @@
 html{
     background-color: #40FF53;
+    overflow-y: hidden;
 }
 
 figure img:first-child{
@@ -46,9 +47,12 @@ a img{
     text-align: center;
     width: fit-content;
     margin: 0 auto;
+    z-index: 1000;
+    position: relative;
 }
+
 #buttons div {
-    background-color:  rgba(255,255,255,0.6);
+    background-color:  rgba(255,255,255,0.8);
     padding: .5rem 2rem;
     border-radius: 8px;
     margin: 1.2rem 0;
@@ -73,8 +77,10 @@ a img{
     text-indent: -9999px;
 }
 
-.buizen img{
-    margin-top: -3em;
+.buizen figure img{
+    margin-top: -6rem;
+    z-index: -1000;
+    display: inline-block;
 }
 
 @media (min-width: 85em) {
@@ -116,6 +122,16 @@ a img{
         width: fit-content;
         margin: -20rem auto 0 auto;
         display: block;
+    }
+
+    .buizen figure{
+        margin-left: 40rem;
+    }
+
+    .buizen figure img{
+        margin-top: 3rem;
+        z-index: -1000;
+        display: inline-block;
     }
 }
 
