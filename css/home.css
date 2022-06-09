@@ -97,7 +97,7 @@ a img{
     .figures{
         display: flex;
         justify-content: space-between;
-        margin-top: -4rem;
+        margin-top: 4rem;
         gap: 45rem;
     }
 
