@@ -272,7 +272,7 @@
             beginSpeler = x;
         }
         current_player = beginSpeler;
-
+        showPlayer(current_player)
         for (let i = 0; i < 9; i++){
             const game = document.getElementById(`game${i}`);
             game.classList.remove('xWint', 'oWint');

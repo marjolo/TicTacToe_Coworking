@@ -46,7 +46,6 @@ import AI from './AI.js';
 
         for (let r = 0; r < 3; r++){
             for (let k = 0; k < 3; k++){
-                //<div id="0-0" class="tile"></div>
                 let tile = document.createElement("div");
                 tile.id = r.toString() + "-" + k.toString() + "/" + div.id;
                 tile.classList.add("tile");
@@ -109,6 +108,7 @@ import AI from './AI.js';
         current_player === x ? current_player = o : current_player = x;
         showPlayer(current_player);
         if (current_player === ai.char) {
+            
             const AIResponse = ai.getBestMove(Object.assign([],boards), Object.assign([], bigBoardConvertedToSingle));
             setInBoard(AIResponse.resultBig, AIResponse.resultSmall, ai.char);
         }
@@ -153,7 +153,6 @@ import AI from './AI.js';
     }
 
     const gameOver = uitkomst => {
-        spelActief = false;
         if (uitkomst === uitkomsten.TIE) {
             console.log('The game ended in a tie');
         }
@@ -164,46 +163,6 @@ import AI from './AI.js';
                 counterX = bowser.innerHTML;
                 counterX++;
                 bowser.innerHTML = counterX
-                //const myTimeout = setTimeout(reset, 3000);
-            }
-            else if(current_player === o){
-                let mario = document.getElementById('scoreMario');
-                counterO = mario.innerHTML;
-                counterO++;
-                mario.innerHTML = counterO;
-                //const myTimeout = setTimeout(reset, 3000);
-            }
-        }
-    }
-    /*
-    const spelWinnen = function (ID) {
-        let winSpel = false;
-        for(let i = 0; i < spelBoard.length; i++){
-            //let game = document.getElementById(`game${i}`);
-            winnen(i, ID);
-        }
-        for(let i = 0; i < 8; i++){
-            const winConditie = winCondities[i];
-            const a = spelBoard[winConditie[0]];
-            const b = spelBoard[winConditie[1]];
-            const c = spelBoard[winConditie[2]];
-            if(a === "" || b === "" || c === ""){
-                winSpel = false;
-            }
-            else if(a === b && b === c && a !== "T" && b !== "T" && c !== "T"){
-                winSpel = true;
-                break;
-            }
-        }
-
-        if(winSpel){
-            spelActief = false;
-            console.log(current_player + " wint")
-            if(current_player === x){
-                let bowser = document.getElementById('scoreBowser');
-                counterX = bowser.innerHTML;
-                counterX++;
-                bowser.innerHTML = counterX
                 const myTimeout = setTimeout(reset, 3000);
             }
             else if(current_player === o){
@@ -214,82 +173,19 @@ import AI from './AI.js';
                 const myTimeout = setTimeout(reset, 3000);
             }
         }
-        else if(!spelBoard.includes("")){
-            spelActief = false;
-            console.log("tie")
-            const myTimeout = setTimeout(reset, 3000);
-        }
-
     }
-    */
 
-    const winnen = function (index, idChild) {
-        let winRonde = false;
-        let activeBoard = boards[index];
-        for(let i = 0; i < 8; i++){
-            const winConditie = winCondities[i];
-            const a = activeBoard[winConditie[0]];
-            const b = activeBoard[winConditie[1]];
-            const c = activeBoard[winConditie[2]];
 
-            if(a === "" || b === "" || c === ""){
-                winRonde = false;
-            }
-            else if(a === b && b === c){
-                winRonde = true;
-                break;
-            }
-        }
-        if(winRonde){
-
-            spelBoard[index] = current_player;
-            console.log(idChild);
-            const child = document.getElementById(idChild);
-            const parent = child.parentElement;
-            console.log(parent.id);
-            let gameIndex = 'game' + index;
-            console.log(gameIndex)
-            console.log(index)
-            if(parent.id === gameIndex){
-                if (current_player === "X"){
-                    parent.classList.add('xWint');
-                    console.log("X vak gekleurd");
-                } else if (current_player === "O"){
-                    parent.classList.add('oWint');
-                    console.log("O vak gekleurd");
-                }
-            }
-            disableBoard(index);
-            
-            let bord = boards[index];
-            bord.forEach((element,index) =>{
-                bord[index] = '';
-            })
-            
-        }
-        else if(!boards[index].includes("")){
-            console.log("tie");
-            
-            let bord = boards[index];
-            bord.forEach((element,index) =>{
-                bord[index] = '';
-            })
-            spelBoard[index] = "T";
-        }
-
-    }
 
     const reset = function() {
+        bigBoardConvertedToSingle = ['', '', '', '', '', '', '', '', ''];
 
         boards.forEach((element,index) =>{
             let bord = boards[index];
             bord.forEach((element,index) =>{
                 bord[index] = '';
             })
-            console.log(boards[index])
         })
-        spelBoard = ['','','','','','','','',''];
-        spelActief = true;
         let smallBoard = document.querySelectorAll('.games');
         for (let i = 0; i < smallBoard.length; i++) {
             let game = smallBoard[i];
@@ -306,13 +202,7 @@ import AI from './AI.js';
                 children[i].addEventListener('click', setTile);
             }
         }
-
-        if(beginSpeler === x){
-            beginSpeler = o;
-        }
-        else{
-            beginSpeler = x;
-        }
+        beginSpeler = beginSpeler === x ? o : x;
         current_player = beginSpeler;
 
         for (let i = 0; i < 9; i++){
