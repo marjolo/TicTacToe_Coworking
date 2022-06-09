@@ -13,7 +13,7 @@
     let spelActief = true;
     let boards = [];
     let spelBoard = ['','','','','','','','',''];
-    let max = 5;
+    let max = 3;
 
     document.addEventListener('DOMContentLoaded', () => {
         console.log("Window loaded");
@@ -314,22 +314,22 @@
 
 
     const popup = function(winner) {
-        winner.style.display = "block";
+        winner.setAttribute('aria-expanded', true);
         winner.classList.add('bounce-in-right');
     }
 
-//kruisje klikken
-        const close1 = document.querySelector('.close1');
-        const close2 = document.querySelector('.close2')
+    //kruisje klikken
+    const close1 = document.querySelector('.close1');
+    const close2 = document.querySelector('.close2')
     close1.addEventListener('click',function() {
-        bowserWins.style.display = "none";
+        bowserWins.setAttribute('aria-expanded', false);
         bowserWins.classList.remove('bounce-in-right');
 
         reset();
         puntenReset();
     })
     close2.addEventListener('click',function() {
-        marioWins.style.display = "none";
+        marioWins.setAttribute('aria-expanded', false);
         marioWins.classList.remove('bounce-in-right');
         reset();
         puntenReset();

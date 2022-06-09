@@ -9,10 +9,17 @@ import AI from './AI.js';
         TIE: 'T',
         NONE: ''
     }
-    let resetKnop = document.querySelector("#resetButton");
-    let menuKnop = document.getElementById('menuButton');
-    let bowserImg = document.getElementById('imgBowser');
-    let marioImg = document.getElementById('imgMario');
+    const resetKnop = document.querySelector("#resetButton");
+    const menuKnop = document.querySelector('#menuButton');
+    const bowserImg = document.querySelector('#imgBowser');
+    const marioImg = document.querySelector('#imgMario');
+    const marioScore = document.querySelector('#scoreMario');
+    const bowserScore = document.querySelector('#scoreBowser');
+    const marioWins = document.querySelector("#marioWins");
+    const bowserWins = document.querySelector("#bowserWins");
+    const close1 = document.querySelector('.close1');
+    const close2 = document.querySelector('.close2');
+    const maxRondes = 3;
 
     let board;
     let x = uitkomsten.X,counterX;
@@ -126,7 +133,7 @@ import AI from './AI.js';
         current_player === x ? current_player = o : current_player = x;
         showPlayer(current_player);
         if (current_player === ai.char) {
-            setTimeout(makeAiMove, 2000);
+            setTimeout(makeAiMove, 1000);
         } //else wait for player
 
     }
@@ -176,24 +183,30 @@ import AI from './AI.js';
         else {
             console.log(current_player + " wint")
             if(uitkomst === x){
-                let bowser = document.getElementById('scoreBowser');
-                counterX = bowser.innerHTML;
+                counterX = bowserScore.innerHTML;
                 counterX++;
-                bowser.innerHTML = counterX
+                bowserScore.innerHTML = counterX;
+                if (counterX === maxRondes) {
+                    popup(x);
+                }
             }
             else if(current_player === o){
-                let mario = document.getElementById('scoreMario');
-                counterO = mario.innerHTML;
+                counterO = marioScore.innerHTML;
                 counterO++;
-                mario.innerHTML = counterO;
+                marioScore.innerHTML = counterO;
+                if (counterO === maxRondes) {
+                    popup(o);
+                }
             }
         }
-        setTimeout(reset, 3000);
+        setTimeout(reset, 2000);
     }
 
 
 
     const reset = function() {
+        bowserScore.innerHTML = 0;
+        marioScore.innerHTML = 0;
         bigBoardConvertedToSingle = ['', '', '', '', '', '', '', '', ''];
 
         boards.forEach((element,index) =>{
@@ -231,7 +244,6 @@ import AI from './AI.js';
     }
     resetKnop.addEventListener('click', function(){
         reset();
-        puntenReset();
     });
 
     const disableBoard = function(boardNum) {
@@ -242,9 +254,30 @@ import AI from './AI.js';
             children[i].removeEventListener('click', setTile);
         }
     }
-
-    const puntenReset = function () {
-        document.getElementById('scoreBowser').innerHTML = 0;
-        document.getElementById('scoreMario').innerHTML = 0;
+    const popup = function(winner) {
+        if (winner === x) {
+            document.querySelector('#bowserWins p').innerHTML = ai.char === x ? "You lose!" : "You win!";
+            bowserWins.setAttribute('aria-expanded', true);
+            bowserWins.classList.add('bounce-in-right');
+            let img = document.querySelector('#bowserWins img')
+            img.src = ai.char === x ? '../images/sadMario.png' : '../images/bowser.png';
+            img.alt = ai.char === x ? 'Mario is looking sad' : 'Bowser grins';
+        }
+        else {
+            document.querySelector('#marioWins p').innerHTML = ai.char === o ? "You lose!" : "You win!";
+            marioWins.setAttribute('aria-expanded', true);
+            marioWins.classList.add('bounce-in-right');
+            let img = document.querySelector('#marioWins img');
+            img.src = ai.char === o ? '../images/sadBowser.png' : '../images/marioWins.png';
+            img.alt = ai.char === o ? 'Bowser is sad and lying on the ground' : 'Mario cheeres';
+        }
     }
+    close1.addEventListener('click',function() {
+        bowserWins.setAttribute('aria-expanded', false);
+        bowserWins.classList.remove('bounce-in-right');
+    })
+    close2.addEventListener('click',function() {
+        marioWins.setAttribute('aria-expanded', false);
+        marioWins.classList.remove('bounce-in-right');
+    })
 })();
