@@ -201,6 +201,11 @@ img {
     font-size: 2rem;
     padding-top: 5rem;
 }
+.modal-content img{
+    display: unset;
+    width: 30%;
+    padding-top: 1.5rem;
+}
 .modal-content p::after {
     content: '🏆';
 }
